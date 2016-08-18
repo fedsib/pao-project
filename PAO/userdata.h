@@ -3,47 +3,39 @@
 
 #include<QString>
 #include<QDate>
+#include"contactinfo.h"
 
-/*Define the basic data of an user*/
+/*Describe the basic data of an user*/
 
-class userData{
+class UserData{
   private:
-    QString CF;
+   // QString CF;
     QString name;
     QString surname;
     QDate dateOfBirth;
-    QString placeofBirth;
     QString sex;
-    QString address;       //Format as: street, postalcode, city, province, state
-    QString email;
-    QString phone;
+    ContactInfo contacts;
 
   public:
-    userData();
-    userData(const QString&, const QString&, const QString&, const QDate&,
-             const QString&, const QString&, const QString&, const QString&, const QString&);
-    userData(const userData&);
-    userData& operator=(const userData&);
-    ~userData();
+    UserData();
+    UserData(const QString&, const QString&, const QDate&,
+             const QString&, const ContactInfo&);
+    UserData(const UserData&);
+    UserData& operator=(const UserData&);
+    ~UserData();
 
-    QString getCF() const;
+    //QString getCF() const;
     QString getName() const;
     QString getSurname() const;
     QDate getDateOfBirth() const;
-    QString getPlaceOfBirth() const;
     QString getSex() const;
-    QString getAddress() const;
-    QString getEmail()const;
-    QString getPhone() const;
+    ContactInfo getContacts() const;
 
     void setName(const QString&);
     void setSurname(const QString&);
     void setDateofBirth(const QDate);
-    void setPlaceOfBirth(const QString&);
     void setSex(const QString&);
-    void setAddress(const QString&);
-    void setEmail(const QString&);
-    void setPhone(const QString&);
+    void setContacts(const ContactInfo&);
 };
 
 #endif // USERDATA_H
