@@ -4,6 +4,7 @@
 #include<animaldata.h>
 #include<vector>
 
+
 class Animal{
   private:
     unsigned int animalID;

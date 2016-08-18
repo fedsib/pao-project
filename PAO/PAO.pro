@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     vetpro.cpp \
     animaldata.cpp \
     animal.cpp \
-    pet.cpp
+    pet.cpp \
+    visit.cpp \
+    abstractvisit.cpp
 
 HEADERS  += mainwindow.h \
     userdata.h \
@@ -37,4 +39,6 @@ HEADERS  += mainwindow.h \
     vetpro.h \
     animaldata.h \
     animal.h \
-    pet.h
+    pet.h \
+    visit.h \
+    abstractvisit.h
