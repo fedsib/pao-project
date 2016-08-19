@@ -1,6 +1,9 @@
 #ifndef ABSTRACTOWNER_H
 #define ABSTRACTOWNER_H
 
+/*Describe a generic PAO user.
+ * An user that could have zero or more animals in his/her animalList */
+
 #include<QString>
 #include"animal.h"
 

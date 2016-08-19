@@ -1,6 +1,10 @@
 #ifndef CONTACTINFO_H
 #define CONTACTINFO_H
 
+/*Describe the contact information for PAO's users.
+ * This type is used in the UserData class.
+ * Address is formatted as described below */
+
 #include<QString>
 
 class ContactInfo{

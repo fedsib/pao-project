@@ -5,7 +5,7 @@
 #include<QDate>
 #include"contactinfo.h"
 
-/*Describe the basic data of an user*/
+/*Describe the basic data of a PAO user*/
 
 class UserData{
   private:

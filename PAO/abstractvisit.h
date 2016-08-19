@@ -1,6 +1,8 @@
 #ifndef ABSTRACTVISIT_H
 #define ABSTRACTVISIT_H
 
+/*Represent a generic Visit */
+
 #include<QDateTime>
 
 class AbstractVisit{

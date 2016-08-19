@@ -1,8 +1,9 @@
 #ifndef PAODB_H
 #define PAODB_H
 
-class PaoDB
-{
+/*Represent the main database in PAO*/
+
+class PaoDB{
 public:
     PaoDB();
 };

@@ -1,9 +1,15 @@
 #ifndef VETBASIC_H
 #define VETBASIC_H
 
-class vetBasic : public Owner{
+#include"owner.h"
+
+/*The simplest type of veterinary.
+ *
+ * It may be an Owner of animals.*/
+
+class VetBasic : public Owner{
   public:
-    vetBasic();
+    VetBasic();
 };
 
 #endif // VETBASIC_H

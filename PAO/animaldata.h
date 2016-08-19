@@ -4,7 +4,7 @@
 #include<QString>
 #include<QDate>
 
-/*Describe the basic data of an Animal*/
+/*Describe the basic data of a PAO's Animal*/
 
 class AnimalData{
   private:

@@ -1,19 +1,23 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
-#include<animaldata.h>
-#include<vector>
+/*Describe a generic PAO's Animal.
+ * Every Animal must be associated with an Owner.
+ * Every Animal has a clinicalSheet (a container of Visits) associated */
 
+#include"animaldata.h"
+#include"abstractvisit.h"
+#include"paocontainer.h"
 
 class Animal{
   private:
     unsigned int animalID;
     AnimalData animalInfo;
-    //vector<Visita> clinicalSheet;
+    PaoContainer<AbstractVisit*> clinicalSheet;
 
   public:
     Animal();
-    Animal(const Animal&);
+    Animal(const unsigned int, const Animal&, const std::vector<Animal*>&);
     Animal& operator=(const Animal&);
     virtual ~Animal()=0;
 

@@ -1,7 +1,10 @@
 #ifndef PET_H
 #define PET_H
 
+/*Represent a pet, an animal owned by an Owner*/
+
 #include<QString>
+#include"animal.h"
 
 class Pet: public Animal{
   private:
