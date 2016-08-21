@@ -22,8 +22,8 @@ class PaoContainer{
         smartPointer& operator=(const smartPointer&);
         ~smartPointer();
 
-        bool operator==(const smartPointer&);
-        bool operator!=(const smartPointer&);
+        bool operator==(const smartPointer&) const;
+        bool operator!=(const smartPointer&) const;
 
         node& operator*() const;
         node* operator->() const;
@@ -36,7 +36,7 @@ class PaoContainer{
         int count_ref;
 
         node();
-        node(const AbstractVisit&, const smartPointer&);
+        node(AbstractVisit*, const smartPointer&);
     };
 
     smartPointer sp_head;

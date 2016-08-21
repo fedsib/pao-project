@@ -7,7 +7,7 @@ PaoContainer::PaoContainer() : container_size(0){}
 /*node*/
 PaoContainer::node::node(): count_ref(0) {}
 
-PaoContainer::node::node(const AbstractVisit& visit, const smartPointer& sp): info(visit), next(sp), count_ref(0) {}
+PaoContainer::node::node(AbstractVisit* visit, const smartPointer& sp): info(visit), next(sp), count_ref(0) {}
 
 /*smartPointer*/
 PaoContainer::smartPointer::smartPointer(node* n) : punt(n){
@@ -15,7 +15,7 @@ PaoContainer::smartPointer::smartPointer(node* n) : punt(n){
     punt->count_ref++;
 }
 
-PaoContainer::smartPointer::smartPointer(const smartPointer& sp): punt(p.punt){
+PaoContainer::smartPointer::smartPointer(const smartPointer& sp): punt(sp.punt){
   if (punt != 0)
     punt->count_ref++;
 }
@@ -23,12 +23,12 @@ PaoContainer::smartPointer::smartPointer(const smartPointer& sp): punt(p.punt){
 PaoContainer::smartPointer& PaoContainer::smartPointer::operator=(const smartPointer& sp){
   if (this != &sp){
     node* tmp = punt;
-    punt = p.punt;
+    punt = sp.punt;
     if (punt)
       punt->count_ref++;
       if (tmp){
         tmp->count_ref--;
-        if (tmp->_count_ref == 0)
+        if (tmp->count_ref == 0)
           delete tmp;
         }
     }
@@ -70,14 +70,8 @@ bool PaoContainer::iterator::operator!=(iterator iter) const{
 }
 
 AbstractVisit& PaoContainer::iterator::operator*() const{
-  return it.punt->info; //friendship
+  return *(it.punt->info); //friendship
 }
-
-bool PaoContainer::iterator::operator!=(iterator i) const
-{
-    return _itPointer != i._itPointer;
-}
-
 
 PaoContainer::iterator& PaoContainer::iterator::operator++(){
   if (it.punt)
@@ -85,10 +79,10 @@ PaoContainer::iterator& PaoContainer::iterator::operator++(){
     return *this;
 }
 
-PaoContainer::iterator PaoContainer::iterator::operator ++(int){
+PaoContainer::iterator PaoContainer::iterator::operator++(int){
   iterator aux = *this;
-  if (it)
-    it = it->_next;
+  if(it.punt)
+    it = it->next;
     return aux;
 }
 
@@ -103,18 +97,18 @@ bool PaoContainer::const_iterator::operator!=(const_iterator iter) const{
 }
 
 const AbstractVisit& PaoContainer::const_iterator::operator*() const{
-  return it.punt->info;
+  return *(it.punt->info);
 }
 
 PaoContainer::const_iterator& PaoContainer::const_iterator::operator++(){
-  if(it)
+  if(it.punt)
     it = it->next;
   return *this;
 }
 
 PaoContainer::const_iterator PaoContainer::const_iterator::operator++(int){
   const_iterator aux = *this;
-  if(it)
+  if(it.punt)
     it = it->next;
   return aux;
 }
