@@ -69,21 +69,20 @@ class PaoContainer{
         bool operator==(const_iterator) const;
         bool operator!=(const_iterator) const;
 
-        const AbstractVisit& operator*() const;
+        //const AbstractVisit& operator*() const;
         // AbstractVisit* operator->() const;
 
         const_iterator& operator++();
-        const_iterator operator ++(int);
+        const_iterator operator++(int);
     };
 
-    AbstractVisit& operator [](const int) const;
+    AbstractVisit* operator[](iterator) const;
 
     int size() const;
     bool isEmpty() const;
-    void insert(const AbstractVisit&, int);
-    void remove(const AbstractVisit&);
-    void push_front(const AbstractVisit&);
-    void push_back(const AbstractVisit&);
+    void remove(const QDateTime&, const unsigned int);
+    void push_front(AbstractVisit*);
+    void push_back(AbstractVisit*);
 
     PaoContainer::iterator begin() const;
     PaoContainer::iterator end() const;

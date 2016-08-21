@@ -1,9 +1,5 @@
 #include "paocontainer.h"
 
-/*PaoContainer*/
-
-PaoContainer::PaoContainer() : container_size(0){}
-
 /*node*/
 PaoContainer::node::node(): count_ref(0) {}
 
@@ -69,9 +65,9 @@ bool PaoContainer::iterator::operator!=(iterator iter) const{
   return it != iter.it;
 }
 
-AbstractVisit& PaoContainer::iterator::operator*() const{
+/*AbstractVisit& PaoContainer::iterator::operator*() const{
   return *(it.punt->info); //friendship
-}
+}*/
 
 PaoContainer::iterator& PaoContainer::iterator::operator++(){
   if (it.punt)
@@ -96,9 +92,9 @@ bool PaoContainer::const_iterator::operator!=(const_iterator iter) const{
   return it != iter.it;
 }
 
-const AbstractVisit& PaoContainer::const_iterator::operator*() const{
+/*const AbstractVisit& PaoContainer::const_iterator::operator*() const{
   return *(it.punt->info);
-}
+}*/
 
 PaoContainer::const_iterator& PaoContainer::const_iterator::operator++(){
   if(it.punt)
@@ -110,5 +106,102 @@ PaoContainer::const_iterator PaoContainer::const_iterator::operator++(int){
   const_iterator aux = *this;
   if(it.punt)
     it = it->next;
+  return aux;
+}
+
+/*PaoContainer*/
+
+PaoContainer::PaoContainer() : container_size(0){}
+
+AbstractVisit* PaoContainer::operator[](iterator iter) const{
+  return iter.it.punt->info;
+}
+
+int PaoContainer::size() const{
+  return container_size;
+}
+
+bool PaoContainer::isEmpty() const{
+  return container_size == 0;
+}
+
+void PaoContainer::remove(const QDateTime& date, const unsigned int aID){
+  smartPointer p = sp_head;
+  smartPointer prec, copy;
+  smartPointer origin = sp_head;
+  sp_head = 0;
+
+  while (p!=0 && !(p->info->getOrario() == date && p->info->getAnimalID() == aID)){
+    copy = new PaoContainer::node(p->info, p->next);
+    if(prec ==0)
+      sp_head = copy;
+    else
+      prec->next = copy;
+    prec = copy;
+    p = p->next;
+    }
+    if(p ==0)
+      sp_head = origin;
+    else if(prec ==0){
+      sp_head = p->next;
+      container_size--;
+    }
+    else{
+      prec->next = p->next;
+      container_size--;
+    }
+}
+
+void PaoContainer::push_front(AbstractVisit* visit){
+  sp_head = new PaoContainer::node(visit, sp_head);
+  container_size++;
+}
+
+void PaoContainer::push_back(AbstractVisit* visit){
+  if (sp_head == 0){
+    sp_head = new PaoContainer::node(visit, 0);
+    container_size++;
+    return;
+  }
+
+  smartPointer sp = sp_head;
+  smartPointer prec, copy;
+  sp_head = 0;
+
+  while (sp!=0){
+    copy = new PaoContainer::node(sp->info, sp->next);
+    if(prec == 0)
+      sp_head = copy;
+      else
+        prec->next = copy;
+
+      sp = sp->next;
+      prec = copy;
+  }
+  copy->next = new PaoContainer::node(visit, 0);
+  container_size++;
+}
+
+class PaoContainer::iterator PaoContainer::begin() const{
+  PaoContainer::iterator aux;
+  aux.it = sp_head; //friendship
+  return aux;
+}
+
+class PaoContainer::iterator PaoContainer::end() const{
+  PaoContainer::iterator aux;
+  aux.it = 0; //friendship
+  return aux;
+}
+
+class PaoContainer::const_iterator PaoContainer::const_begin() const{
+  PaoContainer::const_iterator aux;
+  aux.it = sp_head; //friendship
+  return aux;
+}
+
+class PaoContainer::const_iterator PaoContainer::const_end() const{
+  PaoContainer::const_iterator aux;
+  aux.it= 0; //friendship
   return aux;
 }
