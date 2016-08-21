@@ -90,6 +90,14 @@ class PaoContainer{
     PaoContainer<T>::const_iterator end() const;
 };
 
+/*Definition of node*/
+
+template <class T>
+PaoContainer<T>::node::node(): count_ref(0) {}
+
+template <class T>
+PaoContainer<T>::node::node(const T& v, const PaoContainer<T>::smartPointer& sp): info(v), next(sp), count_ref(0) {}
+
 /*Definition of smartPointer*/
 template <class T>
 PaoContainer<T>::smartPointer::smartPointer(PaoContainer::node* sp): punt(sp){
@@ -110,10 +118,10 @@ class PaoContainer<T>::smartPointer& PaoContainer<T>::smartPointer::operator=(co
     punt = sp.punt;
     if (punt)
       punt->count_ref++;
-      if (temp){
-        temp->count_ref--;
-        if (temp->count_ref == 0)
-          delete temp;
+      if (tmp){
+        tmp->count_ref--;
+        if (tmp->count_ref == 0)
+          delete tmp;
       }
   }
   return *this;
@@ -129,12 +137,12 @@ PaoContainer<T>::smartPointer::~smartPointer(){
 }
 
 template <class T>
-bool PaoContainer<T>::smartPointer::operator==(const smartPointer& sp) const{
+bool PaoContainer<T>::smartPointer::operator==(const PaoContainer<T>::smartPointer& sp) const{
   return punt == sp.punt;
 }
 
 template <class T>
-bool PaoContainer<T>::smartPointer::operator!=(const smartPointer& sp) const{
+bool PaoContainer<T>::smartPointer::operator!=(const PaoContainer<T>::smartPointer& sp) const{
   return punt != sp.punt;
 }
 
