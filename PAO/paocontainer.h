@@ -4,8 +4,8 @@
 /*A custom container for PAO's objects */
 
 #include<iostream>
+#include"abstractvisit.h"
 
-template <class T>
 class PaoContainer{
 
   private:
@@ -31,12 +31,12 @@ class PaoContainer{
 
     class node{
       public:
-        T info;
+        AbstractVisit* info;
         smartPointer next;
         int count_ref;
 
         node();
-        node(const T&, const smartPointer&);
+        node(const AbstractVisit&, const smartPointer&);
     };
 
     smartPointer sp_head;
@@ -44,116 +44,51 @@ class PaoContainer{
 
   public:
     PaoContainer();
+    //PaoContainer(const PaoContainer&);
     class iterator{
       private:
-        friend class PaoContainer<T>;
-        PaoContainer<T>::smartPointer it;
+        friend class PaoContainer;
+        PaoContainer::smartPointer it;
 
       public:
         bool operator==(iterator) const;
         bool operator!=(iterator) const;
 
-        T& operator*() const;
-       // T* operator->() const;
+        AbstractVisit& operator*() const;
+       // AbstractVisit* operator->() const;
 
         iterator& operator++();
         iterator operator++(int);
     };
     class const_iterator{
       private:
-        friend class PaoContainer<T>;
-        PaoContainer<T>::smartPointer it;
+        friend class PaoContainer;
+        PaoContainer::smartPointer it;
 
       public:
         bool operator==(const_iterator) const;
         bool operator!=(const_iterator) const;
 
-        const T& operator*() const;
-        // T* operator->() const;
+        const AbstractVisit& operator*() const;
+        // AbstractVisit* operator->() const;
 
         const_iterator& operator++();
         const_iterator operator ++(int);
     };
 
-    T operator [](const int) const;
+    AbstractVisit& operator [](const int) const;
 
     int size() const;
     bool isEmpty() const;
-    void insert(const T&, int);
-    void remove(const T&);
-    void push_front(const T&);
-    void push_back(const T&);
+    void insert(const AbstractVisit&, int);
+    void remove(const AbstractVisit&);
+    void push_front(const AbstractVisit&);
+    void push_back(const AbstractVisit&);
 
-    PaoContainer<T>::iterator begin() const;
-    PaoContainer<T>::iterator end() const;
-    PaoContainer<T>::const_iterator begin() const;
-    PaoContainer<T>::const_iterator end() const;
+    PaoContainer::iterator begin() const;
+    PaoContainer::iterator end() const;
+    PaoContainer::const_iterator const_begin() const;
+    PaoContainer::const_iterator const_end() const;
 };
-
-/*Definition of node*/
-
-template <class T>
-PaoContainer<T>::node::node(): count_ref(0) {}
-
-template <class T>
-PaoContainer<T>::node::node(const T& v, const PaoContainer<T>::smartPointer& sp): info(v), next(sp), count_ref(0) {}
-
-/*Definition of smartPointer*/
-template <class T>
-PaoContainer<T>::smartPointer::smartPointer(PaoContainer::node* sp): punt(sp){
-  if(punt)
-    punt->count_ref++;
-}
-
-template <class T>
-PaoContainer<T>::smartPointer::smartPointer(const PaoContainer<T>::smartPointer& sp): punt(sp.punt){
-  if (punt)
-    punt->count_ref++;
-}
-
-template <class T>
-class PaoContainer<T>::smartPointer& PaoContainer<T>::smartPointer::operator=(const smartPointer& sp){
-  if (this != &sp){
-    node* tmp = punt;
-    punt = sp.punt;
-    if (punt)
-      punt->count_ref++;
-      if (tmp){
-        tmp->count_ref--;
-        if (tmp->count_ref == 0)
-          delete tmp;
-      }
-  }
-  return *this;
-}
-
-template <class T>
-PaoContainer<T>::smartPointer::~smartPointer(){
-  if (punt){
-    punt->count_ref--;
-    if (punt->count_ref == 0)
-      delete punt;
-  }
-}
-
-template <class T>
-bool PaoContainer<T>::smartPointer::operator==(const PaoContainer<T>::smartPointer& sp) const{
-  return punt == sp.punt;
-}
-
-template <class T>
-bool PaoContainer<T>::smartPointer::operator!=(const PaoContainer<T>::smartPointer& sp) const{
-  return punt != sp.punt;
-}
-
-template <class T>
-class PaoContainer<T>::node& PaoContainer<T>::smartPointer::operator*() const{
-  return *punt;
-}
-
-template <class T>
-class PaoContainer<T>::node* PaoContainer<T>::smartPointer::operator->() const{
-    return punt;
-}
 
 #endif // PAOCONTAINER_H
