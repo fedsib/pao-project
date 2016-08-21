@@ -1,5 +1,4 @@
 #include "paocontainer.h"
 
-paoContainer::paoContainer()
-{
+PaoContainer::PaoContainer(){
 }

@@ -1,5 +1,5 @@
 #include "animaldata.h"
 
-animalData::animalData()
+AnimalData::animalData()
 {
 }

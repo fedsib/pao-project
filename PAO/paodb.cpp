@@ -1,5 +1,5 @@
 #include "paodb.h"
 
-paoDB::paoDB()
+PaoDB::PaoDB()
 {
 }

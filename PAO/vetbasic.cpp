@@ -1,5 +1,5 @@
 #include "vetbasic.h"
 
-vetBasic::vetBasic()
+VetBasic::vetBasic()
 {
 }

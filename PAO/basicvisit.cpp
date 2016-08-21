@@ -1,5 +1,5 @@
-#include "visit.h"
+#include "basicvisit.h"
 
-Visit::Visit()
+BasicVisit::Visit()
 {
 }

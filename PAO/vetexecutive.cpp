@@ -1,5 +1,5 @@
 #include "vetexecutive.h"
 
-vetExecutive::vetExecutive()
+VetExecutive::vetExecutive()
 {
 }

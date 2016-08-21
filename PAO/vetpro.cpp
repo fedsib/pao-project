@@ -1,5 +1,5 @@
 #include "vetpro.h"
 
-vetPro::vetPro()
+VetPro::vetPro()
 {
 }

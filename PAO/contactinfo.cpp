@@ -1,5 +1,5 @@
 #include "contactinfo.h"
 
-contactInfo::contactInfo()
+ContactInfo::contactInfo()
 {
 }
