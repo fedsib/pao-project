@@ -8,6 +8,8 @@
  * It may be an Owner of animals.*/
 
 class VetBasic : public Owner{
+  private:
+
   public:
     VetBasic();
 };

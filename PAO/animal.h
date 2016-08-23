@@ -13,29 +13,14 @@ class Animal{
   private:
     unsigned int animalID;
     AnimalData animalInfo;
-    PaoContainer clinicalSheet;
+    PaoContainer clinicalSheet; //TODO
 
   public:
     Animal();
     Animal(const unsigned int, const AnimalData data, const PaoContainer&);
 
     unsigned int getAnimalID() const;
-
-    QString getName() const;
-    QString getSize() const;
-    QDate getDateOfBirth() const;
-    QDate getLastMovement() const;
-    QString getSex() const;
-    QDate getIDApplication() const;
-    unsigned short int getWeight() const;
-
-    void setName(const QString&);
-    void setSize(const QString&);
-    void setDateOfBirth(const QDate&);
-    void setLastMovement(const QDate&);
-    void setSex(const QString&);
-    void setIDApplication(const QDate&);
-    void getWeight(unsigned short int);
+    AnimalData& getAnimalData() const;
 
     virtual QString typeOfAnimal() const =0;
 };

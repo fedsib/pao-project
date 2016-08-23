@@ -1,4 +1,9 @@
 ##TODO
-- [] Controllare costruttori default
-- [] Controllare metodi set
-- [] Controllare triade memoria classi base
+- [ ] Controllare costruttori default
+- [ ] Rivedere parametri const costruttori
+- [ ] Controllare metodi set
+- [ ] Controllare triade memoria classi base
+- [ ] Rimuovere commenti inutili dalle classi
+- [ ] Implementare Database
+- [ ] Fare relazione
+- [ ] getter/setter PaoContainer in Animal.h

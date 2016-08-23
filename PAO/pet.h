@@ -27,6 +27,8 @@ class Pet: public Animal{
     void setBreed(const QString&);
     void setFur(const QString&);
     void setCategory(const QString&);
+
+    virtual QString typeOfAnimal() const;
 };
 
 #endif // PET_H
