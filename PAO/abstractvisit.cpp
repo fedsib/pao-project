@@ -1,8 +1,8 @@
 #include "abstractvisit.h"
 
-AbstractVisit::AbstractVisit(){}
+AbstractVisit::AbstractVisit() : basic_price(20) {}
 
-AbstractVisit::AbstractVisit(const QDateTime& dt, const QString& ID, unsigned int aID) : date(dt), AnimalID(aID), IDVet(ID){}
+AbstractVisit::AbstractVisit(const QDateTime& dt, const QString& ID, unsigned int aID, double bp) : date(dt), AnimalID(aID), IDVet(ID), basic_price(bp){}
 
 QDateTime AbstractVisit::getDate() const{
   return date;

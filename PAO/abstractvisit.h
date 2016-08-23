@@ -11,9 +11,12 @@ class AbstractVisit{
     QString IDVet;
     unsigned int AnimalID;
 
+  protected:
+    double basic_price;
+
   public:
     AbstractVisit();
-    AbstractVisit(const QDateTime& , const QString&, unsigned int=0, unsigned short int=0);
+    AbstractVisit(const QDateTime& , const QString&, unsigned int=0, double=20);
     //AbstractVisit(const AbstractVisit&);
     //AbstractVisit& operator=(const AbstractVisit&);
     //virtual ~AbstractVisit()=0;
@@ -26,8 +29,8 @@ class AbstractVisit{
     void setIDVet(const QString&);
     void setAnimalID(const unsigned int);
 
-    virtual void calcPrice(const short int) = 0;
-    virtual QString typeOfUser() const =0;
+    virtual double calcPrice() = 0;
+    virtual QString typeOfVisit() const =0;
 };
 
 #endif // ABSTRACTVISIT_H

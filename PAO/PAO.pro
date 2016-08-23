@@ -27,7 +27,9 @@ SOURCES += main.cpp\
     pet.cpp \
     abstractvisit.cpp \
     basicvisit.cpp \
-    vetexecutive.cpp
+    vetexecutive.cpp \
+    specializedvisit.cpp \
+    vaccinevisit.cpp
 
 HEADERS  += mainwindow.h \
     userdata.h \
@@ -43,4 +45,6 @@ HEADERS  += mainwindow.h \
     pet.h \
     abstractvisit.h \
     basicvisit.h \
-    vetexecutive.h
+    vetexecutive.h \
+    specializedvisit.h \
+    vaccinevisit.h

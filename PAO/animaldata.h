@@ -33,9 +33,9 @@ class AnimalData{
     void setSize(const QString&);
     void setDateOfBirth(const QDate&);
     void setLastMovement(const QDate&);
-    void setSex(const QString);
+    void setSex(const QString&);
     void setIDApplication(const QDate&);
-    void getWeight(unsigned short int);
+    void setWeight(unsigned short int);
 };
 
 #endif // ANIMALDATA_H

@@ -3,11 +3,13 @@
 
 /*The simplest type of Visit available in PAO*/
 
+#include"abstractvisit.h"
+
 class BasicVisit : AbstractVisit{
-  private:
 
   public:
-    BasicVisit();
+    virtual double calcPrice() override;
+    virtual QString typeOfVisit() const override;
 };
 
 #endif // BASICVISIT_H

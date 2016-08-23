@@ -57,6 +57,6 @@ void AnimalData::setIDApplication(const QDate& ida){
   IDApplication = ida;
 }
 
-void AnimalData::getWeight(unsigned short int g){
+void AnimalData::setWeight(unsigned short int g){
   weight = g;
 }
