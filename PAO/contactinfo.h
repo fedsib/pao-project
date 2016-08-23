@@ -10,14 +10,11 @@
 class ContactInfo{
   private:
     QString address;       //Format as: street, postalcode, city, province, state
-    QString Mail;
+    QString mail;
     QString phone;
 
   public:
-    ContactInfo();
-    ContactInfo(const ContactInfo&);
-    ContactInfo& operator=(const ContactInfo&);
-    ~ContactInfo();
+    ContactInfo(QString ="", QString = "", QString = "");
 
     QString getAddress() const;
     QString getMail() const;

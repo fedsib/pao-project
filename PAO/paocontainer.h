@@ -44,7 +44,7 @@ class PaoContainer{
 
   public:
     PaoContainer();
-    //PaoContainer(const PaoContainer&);
+    PaoContainer(const PaoContainer&);
     class iterator{
       private:
         friend class PaoContainer;

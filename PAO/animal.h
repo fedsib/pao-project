@@ -3,7 +3,7 @@
 
 /*Describe a generic PAO's Animal.
  * Every Animal must be associated with an Owner.
- * Every Animal has a clinicalSheet (a container of Visits) associated */
+ * Every Animal has a clinicalSheet (a PaoContainer of AbstractVisits*) associated */
 
 #include"animaldata.h"
 #include"abstractvisit.h"
@@ -13,14 +13,13 @@ class Animal{
   private:
     unsigned int animalID;
     AnimalData animalInfo;
-    PaoContainer<AbstractVisit*> clinicalSheet;
+    PaoContainer clinicalSheet;
 
   public:
     Animal();
-    Animal(const unsigned int, const Animal&, const std::vector<Animal*>&);
-    Animal& operator=(const Animal&);
-    virtual ~Animal()=0;
+    Animal(const unsigned int, const AnimalData&data, const PaoContainer&);
 
+    virtual QString typeOfAnimal() const =0;
 };
 
 #endif // ANIMAL_H

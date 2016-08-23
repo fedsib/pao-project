@@ -20,7 +20,8 @@ class AbstractOwner{
     virtual ~AbstractOwner()=0;
 
     QString getFiscalCode() const;
-    std::vector<Animal*>& getAnimalList() const;
+    std::vector<Animal*> getAnimalList() const;
+    virtual QString typeOfUser() const =0;
 };
 
 #endif // ABSTRACTOWNER_H

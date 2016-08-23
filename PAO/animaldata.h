@@ -20,10 +20,6 @@ class AnimalData{
     AnimalData();
     AnimalData(const QString&, const QString&, const QDate&, const QDate&,
             const QString&, const QDate&, unsigned short int);
-    AnimalData(const AnimalData&);
-    AnimalData& operator=(const AnimalData&);
-    ~AnimalData();
-
 
     QString getName() const;
     QString getSize() const;
@@ -39,7 +35,7 @@ class AnimalData{
     void setLastMovement(const QDate&);
     void setSex(const QString);
     void setIDApplication(const QDate&);
-    void getWeight(const unsigned short int);
+    void getWeight(unsigned short int);
 };
 
 #endif // ANIMALDATA_H
