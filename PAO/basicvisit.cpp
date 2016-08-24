@@ -1,8 +1,8 @@
 #include "basicvisit.h"
 
-virtual double BasicVisit::calcPrice() override{
+double BasicVisit::calcPrice(){
   return basic_price;
 }
-virtual QString BasicVisit::typeOfVisit() const override{
+QString BasicVisit::typeOfVisit() const{
   return "BasicVisit";
 }

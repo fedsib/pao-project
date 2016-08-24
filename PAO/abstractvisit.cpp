@@ -2,7 +2,8 @@
 
 AbstractVisit::AbstractVisit() : basic_price(20) {}
 
-AbstractVisit::AbstractVisit(const QDateTime& dt, const QString& ID, unsigned int aID, double bp) : date(dt), AnimalID(aID), IDVet(ID), basic_price(bp){}
+AbstractVisit::AbstractVisit(const QDateTime& dt, const QString& ID, const QString& n, unsigned int aID, double bp) : date(dt), AnimalID(aID),
+                                                                                                  IDVet(ID), basic_price(bp),note(n) {}
 
 QDateTime AbstractVisit::getDate() const{
   return date;

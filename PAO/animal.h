@@ -3,26 +3,30 @@
 
 /*Describe a generic PAO's Animal.
  * Every Animal must be associated with an Owner.
- * Every Animal has a clinicalSheet (a PaoContainer of AbstractVisits*) associated */
+ */
 
 #include"animaldata.h"
 #include"abstractvisit.h"
-#include"paocontainer.h"
 
 class Animal{
   private:
+    QString ownerID;
     unsigned int animalID;
     AnimalData animalInfo;
-    PaoContainer clinicalSheet; //TODO
 
   public:
     Animal();
-    Animal(const unsigned int, const AnimalData data, const PaoContainer&);
+    Animal(const unsigned int, const AnimalData& data);
 
+    QString getOwnerID() const;
     unsigned int getAnimalID() const;
     AnimalData& getAnimalData() const;
 
     virtual QString typeOfAnimal() const =0;
+
+    void setOwnerID(const QString&);
+    void setAnimalID(const unsigned int);
+    void setAnimalData(const AnimalData&);
 };
 
 #endif // ANIMAL_H

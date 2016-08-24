@@ -14,11 +14,7 @@ class Pet: public Animal{
 
   public:
     Pet();
-
-    Pet(const QString&, const QString&, const QString&, category);
-    Pet(const Pet&);
-    Pet& operator=(const Pet&);
-    ~Pet();
+    Pet(const QString&, const QString&, const QString&);
 
     QString getBreed() const;
     QString getFur() const;
@@ -28,7 +24,7 @@ class Pet: public Animal{
     void setFur(const QString&);
     void setCategory(const QString&);
 
-    virtual QString typeOfAnimal() const;
+    virtual QString typeOfAnimal() const override;
 };
 
 #endif // PET_H

@@ -7,3 +7,4 @@
 - [ ] Implementare Database
 - [ ] Fare relazione
 - [ ] getter/setter PaoContainer in Animal.h
+- [ ] const_cast vs setter in animal/userData

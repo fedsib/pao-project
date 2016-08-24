@@ -8,6 +8,8 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QMAKE_CXXFLAGS += -std=c++11
+
 TARGET = PAO
 TEMPLATE = app
 
@@ -20,8 +22,6 @@ SOURCES += main.cpp\
     contactinfo.cpp \
     abstractowner.cpp \
     owner.cpp \
-    vetbasic.cpp \
-    vetpro.cpp \
     animaldata.cpp \
     animal.cpp \
     pet.cpp \
@@ -37,8 +37,6 @@ HEADERS  += mainwindow.h \
     contactinfo.h \
     abstractowner.h \
     owner.h \
-    vetbasic.h \
-    vetpro.h \
     animaldata.h \
     animal.h \
     pet.h \

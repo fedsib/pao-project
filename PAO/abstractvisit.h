@@ -9,14 +9,16 @@ class AbstractVisit{
   private:
     QDateTime date;
     QString IDVet;
+    QString note;
     unsigned int AnimalID;
+
 
   protected:
     double basic_price;
 
   public:
     AbstractVisit();
-    AbstractVisit(const QDateTime& , const QString&, unsigned int=0, double=20);
+    AbstractVisit(const QDateTime& , const QString&, const QString&, unsigned int=0, double=20);
     //AbstractVisit(const AbstractVisit&);
     //AbstractVisit& operator=(const AbstractVisit&);
     //virtual ~AbstractVisit()=0;

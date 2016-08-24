@@ -1,8 +1,8 @@
 #include "specializedvisit.h"
 
-virtual double SpecializedVisit::calcPrice() override{
+double SpecializedVisit::calcPrice(){
   return (basic_price*2)+(basic_price*2)*0.3;
 }
-virtual QString SpecializedVisit::typeOfVisit() const override{
+QString SpecializedVisit::typeOfVisit() const{
   return "SpecializedVisit";
 }

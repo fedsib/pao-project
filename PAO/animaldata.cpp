@@ -1,9 +1,10 @@
 #include "animaldata.h"
 
-AnimalData::animalData(){}
+AnimalData::AnimalData(){}
 
-AnimalData::AnimalData(const QString&, const QString&, const QDate&, const QDate&,
-        const QString&, const QDate&, unsigned short int);
+AnimalData::AnimalData(const QString& n, const QString& sz, const QDate& dob, const QDate& lm,
+        const QString& s, const QDate& idapp, unsigned short int w) : name(n),
+        dateofBirth(dob), lastMovement(lm), sex(s), IDApplication(idapp), weight(w){}
 
 QString AnimalData::getName() const{
   return name;

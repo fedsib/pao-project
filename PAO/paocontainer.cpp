@@ -65,9 +65,9 @@ bool PaoContainer::iterator::operator!=(iterator iter) const{
   return it != iter.it;
 }
 
-/*AbstractVisit& PaoContainer::iterator::operator*() const{
+AbstractVisit& PaoContainer::iterator::operator*() const{
   return *(it.punt->info); //friendship
-}*/
+}
 
 PaoContainer::iterator& PaoContainer::iterator::operator++(){
   if (it.punt)
