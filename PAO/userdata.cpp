@@ -4,6 +4,12 @@ UserData::UserData(){}
 
 UserData::UserData(const QString& n, const QString& s, const ContactInfo& ci) : name(n), surname(s), contacts(ci){}
 
+UserData::UserData(const QJsonObject& js) : name(js["name"].toString()), surname(js["surname"].toString()){
+  contacts.setAddress(js["address"].toString());
+  contacts.setMail(js["mail"].toString());
+  contacts.setPhone(js["phone"].toString());
+}
+
 QString UserData::getName() const{
   return name;
 }
@@ -28,3 +34,8 @@ void UserData::setContacts(const ContactInfo& ci){
   contacts = ci;
 }
 
+void UserData::saveUserDataToFile(QJsonObject& js){
+  js["name"] = name;
+  js["surname"] = surname;
+  this->contacts.ContactInfo::saveContactToFile(js);
+}

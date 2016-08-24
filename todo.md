@@ -8,3 +8,5 @@
 - [ ] Fare relazione
 - [ ] getter/setter PaoContainer in Animal.h
 - [ ] const_cast vs setter in animal/userData
+- [ ] controllare metodi QDate in animalData
+- [ ] controllare JSON constructor Animal

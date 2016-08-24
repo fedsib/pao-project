@@ -26,7 +26,7 @@ class ContactInfo{
     void setMail(const QString&);
     void setPhone(const QString&);
 
-    void saveContactsToFile(QJsonObject&);
+    void saveContactToFile(QJsonObject&);
 };
 
 #endif // CONTACTINFO_H

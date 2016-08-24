@@ -189,13 +189,13 @@ void PaoContainer::push_back(AbstractVisit* visit){
   container_size++;
 }
 
-class PaoContainer::iterator PaoContainer::begin() const{
+class PaoContainer::iterator PaoContainer::begin(){
   PaoContainer::iterator aux;
   aux.it = sp_head; //friendship
   return aux;
 }
 
-class PaoContainer::iterator PaoContainer::end() const{
+class PaoContainer::iterator PaoContainer::end(){
   PaoContainer::iterator aux;
   aux.it = 0; //friendship
   return aux;

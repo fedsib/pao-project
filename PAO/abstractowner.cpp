@@ -1,11 +1,9 @@
 #include "abstractowner.h"
 
-AbstractOwner::AbstractOwner(const QJsonObject& js){
+AbstractOwner::AbstractOwner(const QJsonObject& js) : fiscalCode(js["CF"].toString()){}
 
-}
-
-void AbstractOwner::saveAbsOwner(QJsonObject&){
-
+void AbstractOwner::saveAbsOwner(QJsonObject& js){
+   js["CF"] = fiscalCode;
 }
 
 AbstractOwner::AbstractOwner(){}

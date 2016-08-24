@@ -10,7 +10,6 @@
 class AnimalData{
   private:
     QString name;
-    QString size;
     QDate dateofBirth;
     QDate lastMovement;
     QString sex;
@@ -19,12 +18,11 @@ class AnimalData{
 
   public:
     AnimalData();
-    AnimalData(const QString&, const QString&, const QDate&, const QDate&,
-            const QString&, const QDate&, unsigned short int);
+    AnimalData(const QString&, const QDate&, const QDate&, const QString&,
+               const QDate&, unsigned short int);
     AnimalData(const QJsonObject&);
 
     QString getName() const;
-    QString getSize() const;
     QDate getDateOfBirth() const;
     QDate getLastMovement() const;
     QString getSex() const;
@@ -32,7 +30,6 @@ class AnimalData{
     unsigned short int getWeight() const;
 
     void setName(const QString&);
-    void setSize(const QString&);
     void setDateOfBirth(const QDate&);
     void setLastMovement(const QDate&);
     void setSex(const QString&);

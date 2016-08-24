@@ -1,5 +1,12 @@
 #include "abstractvisit.h"
 
+void AbstractVisit::saveAbsVisit(QJsonObject& js){
+}
+
+AbstractVisit::AbstractVisit(const QJsonObject& js){
+
+}
+
 AbstractVisit::AbstractVisit() : basic_price(20) {}
 
 AbstractVisit::AbstractVisit(const QDateTime& dt, const QString& ID, const QString& n, unsigned int aID, double bp) : date(dt), AnimalID(aID),
