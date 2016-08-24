@@ -4,6 +4,8 @@ Owner::Owner(){}
 
 Owner::Owner(const UserData& ud) : userInfo(ud) {}
 
+Owner::Owner(const QJsonObject& js) :  AbstractOwner(js), userInfo(UserData(js)){}
+
 UserData& Owner::getUserInfo() const{
   const_cast<UserData&>(this->userInfo);
 }

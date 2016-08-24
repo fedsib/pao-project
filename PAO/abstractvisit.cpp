@@ -1,10 +1,8 @@
 #include "abstractvisit.h"
 
-void AbstractVisit::saveAbsVisit(QJsonObject& js){
-}
-
-AbstractVisit::AbstractVisit(const QJsonObject& js){
-
+AbstractVisit::AbstractVisit(const QJsonObject& js) : IDVet(js["IDVet"].toString()), note(js["note"].toString()),
+  AnimalID(static_cast<unsigned int>(js["animalID"].toInt())), basic_price(js["basic_price"].toDouble()){
+  this->setDate(QDateTime::fromString(js["date"].toString(), "'M'M'd'd'y'yyhh:mm:ss"));
 }
 
 AbstractVisit::AbstractVisit() : basic_price(20) {}
@@ -34,4 +32,12 @@ void AbstractVisit::setIDVet(const QString& ID){
 
 void AbstractVisit::setAnimalID(const unsigned int aID){
   AnimalID = aID;
+}
+
+void AbstractVisit::saveAbsVisit(QJsonObject& js){
+  js["date"] = date.toString("'M'M'd'd'y'yyhh:mm:ss");
+  js["IDVet"] = IDVet;
+  js["note"] = note;
+  js["animalID"] = static_cast<int>(AnimalID);
+  js["basic_price"] = basic_price;
 }
