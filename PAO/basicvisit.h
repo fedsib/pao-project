@@ -10,6 +10,8 @@ class BasicVisit : AbstractVisit{
   public:
     virtual double calcPrice() override;
     virtual QString typeOfVisit() const override;
+
+    virtual void saveObj(QJsonObject&) override;
 };
 
 #endif // BASICVISIT_H

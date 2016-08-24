@@ -1,8 +1,9 @@
 #ifndef ANIMALDATA_H
 #define ANIMALDATA_H
 
-#include<QString>
 #include<QDate>
+#include<QJsonObject>
+
 
 /*Describe the basic data of a PAO's Animal*/
 
@@ -20,6 +21,7 @@ class AnimalData{
     AnimalData();
     AnimalData(const QString&, const QString&, const QDate&, const QDate&,
             const QString&, const QDate&, unsigned short int);
+    AnimalData(const QJsonObject&);
 
     QString getName() const;
     QString getSize() const;
@@ -36,6 +38,8 @@ class AnimalData{
     void setSex(const QString&);
     void setIDApplication(const QDate&);
     void setWeight(unsigned short int);
+
+    void saveAnimalDataToFile(QJsonObject&);
 };
 
 #endif // ANIMALDATA_H

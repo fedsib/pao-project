@@ -13,8 +13,11 @@ class Owner : public AbstractOwner {
   public:
     Owner();
     Owner(const UserData&);
+    //Owner(const QJsonObject&);
 
     UserData& getUserInfo() const;
+
+    virtual void saveObj(QJsonObject&) override;
 };
 
 #endif // OWNER_H

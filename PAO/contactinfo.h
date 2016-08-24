@@ -6,6 +6,7 @@
  * Address is formatted as described below */
 
 #include<QString>
+#include<QJsonObject>
 
 class ContactInfo{
   private:
@@ -15,6 +16,7 @@ class ContactInfo{
 
   public:
     ContactInfo(QString ="", QString = "", QString = "");
+    ContactInfo(const QJsonObject&);
 
     QString getAddress() const;
     QString getMail() const;
@@ -23,6 +25,8 @@ class ContactInfo{
     void setAddress(const QString&);
     void setMail(const QString&);
     void setPhone(const QString&);
+
+    void saveContactsToFile(QJsonObject&);
 };
 
 #endif // CONTACTINFO_H

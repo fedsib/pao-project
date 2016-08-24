@@ -3,7 +3,6 @@
 
 /*Represent a pet, an animal owned by an Owner*/
 
-#include<QString>
 #include"animal.h"
 
 class Pet: public Animal{
@@ -15,6 +14,7 @@ class Pet: public Animal{
   public:
     Pet();
     Pet(const QString&, const QString&, const QString&);
+    Pet(const QJsonObject&);
 
     QString getBreed() const;
     QString getFur() const;
@@ -25,6 +25,7 @@ class Pet: public Animal{
     void setCategory(const QString&);
 
     virtual QString typeOfAnimal() const override;
+    virtual void saveObj(QJsonObject&) override;
 };
 
 #endif // PET_H

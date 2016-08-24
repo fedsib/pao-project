@@ -84,8 +84,8 @@ class PaoContainer{
     void push_front(AbstractVisit*);
     void push_back(AbstractVisit*);
 
-    PaoContainer::iterator begin() const;
-    PaoContainer::iterator end() const;
+    PaoContainer::iterator begin();
+    PaoContainer::iterator end();
     PaoContainer::const_iterator const_begin() const;
     PaoContainer::const_iterator const_end() const;
 };
