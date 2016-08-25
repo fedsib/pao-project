@@ -5,16 +5,16 @@
 
 #include"abstractvisit.h"
 
-class BasicVisit : AbstractVisit{
+class BasicVisit : public AbstractVisit{
 
   public:
 
     BasicVisit();
     BasicVisit(const QJsonObject&);
-    virtual double calcPrice() override;
+    virtual double calcPrice() const override;
     virtual QString typeOfVisit() const override;
 
-    virtual void saveObj(QJsonObject&) override;
+    virtual void saveObj(QJsonObject&) const override;
 };
 
 #endif // BASICVISIT_H

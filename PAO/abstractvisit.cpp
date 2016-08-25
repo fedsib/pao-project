@@ -34,7 +34,7 @@ void AbstractVisit::setAnimalID(const unsigned int aID){
   AnimalID = aID;
 }
 
-void AbstractVisit::saveAbsVisit(QJsonObject& js){
+void AbstractVisit::saveAbsVisit(QJsonObject& js) const{
   js["date"] = date.toString("'M'M'd'd'y'yyhh:mm:ss");
   js["IDVet"] = IDVet;
   js["note"] = note;

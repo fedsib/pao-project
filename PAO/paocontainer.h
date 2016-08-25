@@ -55,7 +55,7 @@ class PaoContainer{
         bool operator!=(iterator) const;
 
         AbstractVisit& operator*() const;
-       // AbstractVisit* operator->() const;
+        AbstractVisit* operator->() const;
 
         iterator& operator++();
         iterator operator++(int);
@@ -69,8 +69,8 @@ class PaoContainer{
         bool operator==(const_iterator) const;
         bool operator!=(const_iterator) const;
 
-        //const AbstractVisit& operator*() const;
-        // AbstractVisit* operator->() const;
+        const AbstractVisit& operator*() const;
+        const AbstractVisit* operator->() const;
 
         const_iterator& operator++();
         const_iterator operator++(int);

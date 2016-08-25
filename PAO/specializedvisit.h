@@ -9,9 +9,9 @@ class SpecializedVisit : public AbstractVisit{
     SpecializedVisit();
     SpecializedVisit(const QJsonObject&);
 
-    virtual double calcPrice() override;
+    virtual double calcPrice() const override;
     virtual QString typeOfVisit() const override;
-    virtual void saveObj(QJsonObject&) override;
+    virtual void saveObj(QJsonObject&) const override;
 };
 
 #endif // SPECIALIZEDVISIT_H

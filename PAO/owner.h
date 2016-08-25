@@ -17,6 +17,7 @@ class Owner : public AbstractOwner {
 
     UserData& getUserInfo() const;
 
+    virtual QString typeOfUser() const override;
     virtual void saveObj(QJsonObject&) override;
 };
 

@@ -8,8 +8,8 @@ class VaccineVisit : public AbstractVisit{
     VaccineVisit();
     VaccineVisit(const QJsonObject&);
 
-    virtual double calcPrice() override;
+    virtual double calcPrice() const override;
     virtual QString typeOfVisit() const override;
-    virtual void saveObj(QJsonObject&) override;
+    virtual void saveObj(QJsonObject&) const override;
 };
 #endif // VACCINEVISIT_H

@@ -10,7 +10,12 @@ UserData& Owner::getUserInfo() const{
   const_cast<UserData&>(this->userInfo);
 }
 
+QString Owner::typeOfUser() const {
+  return "Owner";
+}
+
 void Owner::saveObj(QJsonObject& js){
+  js["type"] = this->typeOfUser();
   saveAbsOwner(js);
   userInfo.saveUserDataToFile(js);
 }

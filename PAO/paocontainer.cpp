@@ -47,11 +47,11 @@ bool PaoContainer::smartPointer::operator!=(const smartPointer& sp) const{
   return punt != sp.punt;
 }
 
-class PaoContainer::node& PaoContainer::smartPointer::operator*() const{
+PaoContainer::node& PaoContainer::smartPointer::operator*() const{
   return *punt;
 }
 
-class PaoContainer::node* PaoContainer::smartPointer::operator->() const{
+PaoContainer::node* PaoContainer::smartPointer::operator->() const{
   return punt;
 }
 
@@ -67,6 +67,10 @@ bool PaoContainer::iterator::operator!=(iterator iter) const{
 
 AbstractVisit& PaoContainer::iterator::operator*() const{
   return *(it.punt->info); //friendship
+}
+
+AbstractVisit* PaoContainer::iterator::operator->() const{
+    return it.punt->info;
 }
 
 PaoContainer::iterator& PaoContainer::iterator::operator++(){
@@ -92,9 +96,13 @@ bool PaoContainer::const_iterator::operator!=(const_iterator iter) const{
   return it != iter.it;
 }
 
-/*const AbstractVisit& PaoContainer::const_iterator::operator*() const{
+const AbstractVisit& PaoContainer::const_iterator::operator*() const{
   return *(it.punt->info);
-}*/
+}
+
+const AbstractVisit* PaoContainer::const_iterator::operator->() const{
+  return it.punt->info;
+}
 
 PaoContainer::const_iterator& PaoContainer::const_iterator::operator++(){
   if(it.punt)

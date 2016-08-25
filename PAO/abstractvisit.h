@@ -1,7 +1,9 @@
 #ifndef ABSTRACTVISIT_H
 #define ABSTRACTVISIT_H
 
-/*Represent a generic Visit */
+/*Represent a generic Visit
+ * animalID is a non negative number < of 4.294.967.295
+ */
 
 #include<QDateTime>
 #include<QJsonObject>
@@ -13,11 +15,11 @@ class AbstractVisit{
     QString note;
     unsigned int AnimalID;
 
-
   protected:
     double basic_price;
+
     AbstractVisit(const QJsonObject&);
-    void saveAbsVisit(QJsonObject&);
+    void saveAbsVisit(QJsonObject&) const;
 
   public:
     AbstractVisit();
@@ -31,9 +33,9 @@ class AbstractVisit{
     void setIDVet(const QString&);
     void setAnimalID(const unsigned int);
 
-    virtual double calcPrice() = 0;
+    virtual double calcPrice() const = 0;
     virtual QString typeOfVisit() const =0;
-    virtual void saveObj(QJsonObject&) = 0;
+    virtual void saveObj(QJsonObject&) const = 0;
 };
 
 #endif // ABSTRACTVISIT_H

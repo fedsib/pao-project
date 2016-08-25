@@ -3,6 +3,7 @@
 
 /*Describe a generic PAO's Animal.
  * Every Animal must be associated with an Owner.
+ * animalID is a non negative number < of 4.294.967.295
  */
 
 #include<QJsonObject>

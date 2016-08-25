@@ -5,7 +5,9 @@
 #include<QJsonObject>
 
 
-/*Describe the basic data of a PAO's Animal*/
+/*Describe the basic data of a PAO's Animal
+ * weight is a non negative number < of 65.535
+*/
 
 class AnimalData{
   private:
