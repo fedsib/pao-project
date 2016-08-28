@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     abstractvisit.cpp \
     basicvisit.cpp \
     specializedvisit.cpp \
-    vaccinevisit.cpp
+    vaccinevisit.cpp \
+    useraccount.cpp
 
 HEADERS  += mainwindow.h \
     userdata.h \
@@ -43,4 +44,5 @@ HEADERS  += mainwindow.h \
     abstractvisit.h \
     basicvisit.h \
     specializedvisit.h \
-    vaccinevisit.h
+    vaccinevisit.h \
+    useraccount.h
