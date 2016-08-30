@@ -15,7 +15,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     userdata.cpp \
     paocontainer.cpp \
     paodb.cpp \
@@ -29,9 +28,10 @@ SOURCES += main.cpp\
     basicvisit.cpp \
     specializedvisit.cpp \
     vaccinevisit.cpp \
-    useraccount.cpp
+    useraccount.cpp \
+    login.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     userdata.h \
     paocontainer.h \
     paodb.h \
@@ -45,4 +45,5 @@ HEADERS  += mainwindow.h \
     basicvisit.h \
     specializedvisit.h \
     vaccinevisit.h \
-    useraccount.h
+    useraccount.h \
+    login.h
