@@ -3,15 +3,14 @@
 
 /*Describe a generic PAO user.*/
 
-#include<QString>
-#include <QJsonObject>
-#include"animal.h"
+//#include <QJsonObject>
+//#include"animal.h"
 #include"useraccount.h"
 
 class AbstractOwner{
   private:
     QString fiscalCode;
-    UserAccount account;
+    UserAccount* account;
 
   protected:
     AbstractOwner(const QJsonObject&);
@@ -20,9 +19,10 @@ class AbstractOwner{
   public:
     AbstractOwner();
     AbstractOwner(const QString&);
+    AbstractOwner(const QString&, UserAccount*);
 
     QString getFiscalCode() const;
-    UserAccount& getUserAccount() const;
+    UserAccount* getUserAccount() const;
 
     virtual QString typeOfUser() const =0;
     virtual void saveObj(QJsonObject&) = 0;

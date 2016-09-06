@@ -2,7 +2,7 @@
 #define USERDATA_H
 
 #include<QDate>
-#include<QJsonObject>
+//#include<QJsonObject>
 
 #include"contactinfo.h"
 
@@ -25,7 +25,7 @@ class UserData{
 
     void setName(const QString&);
     void setSurname(const QString&);
-    void setContacts(const ContactInfo&);
+    void setContacts(const QString&, const QString&, const QString&);
 
     void saveUserDataToFile(QJsonObject&);
 };

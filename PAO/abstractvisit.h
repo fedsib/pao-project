@@ -5,15 +5,17 @@
  * animalID is a non negative number < of 4.294.967.295
  */
 
-#include<QDateTime>
+#include<QDate>
 #include<QJsonObject>
 
 class AbstractVisit{
   private:
-    QDateTime date;
+    QString visitCode;
+    QDate date;
     QString IDVet;
-    QString note;
     unsigned int AnimalID;
+    QString note;
+    void setVisitCode();
 
   protected:
     double basic_price;
@@ -22,16 +24,21 @@ class AbstractVisit{
     void saveAbsVisit(QJsonObject&) const;
 
   public:
-    AbstractVisit();
-    AbstractVisit(const QDateTime& , const QString&, const QString&, unsigned int=0, double=20);
+    AbstractVisit(const QDate& , const QString&, const unsigned int, QString="", double=20);
 
-    QDateTime getDate() const;
+    QString getVisitCode() const;
+    QDate getDate() const;
     QString getIDVet() const;
     unsigned int getAnimalID() const;
+    QString getNote() const;
+    double getBasicPrice() const;
 
-    void setDate(const QDateTime&);
+    void editAbsVisit(QString,QString,double);
+    void setDate(const QDate&);
     void setIDVet(const QString&);
+    void setNote(QString);
     void setAnimalID(const unsigned int);
+    void setBasicPrice(double);
 
     virtual double calcPrice() const = 0;
     virtual QString typeOfVisit() const =0;

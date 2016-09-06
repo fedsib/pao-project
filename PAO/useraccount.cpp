@@ -6,8 +6,6 @@ UserAccount::UserAccount(const QString& p, bool b) : Vet(b){
   this->setPwd(p);
 }
 
-UserAccount::UserAccount(const QJsonObject& js) : pwdHash(js["hash"].toString()), Vet(js["isVet"].toBool()){}
-
 QString UserAccount::getPwdHash() const{
   return pwdHash;
 }
@@ -20,10 +18,14 @@ bool UserAccount::match(const QString& password)const{
   QByteArray hashArray = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Md5);
   QString h(hashArray.toHex().constData());
 
-  if(! (h == password)) {
+  if(! (h == pwdHash)) {
     return false;
   }
   return true;
+}
+
+void UserAccount::setPwdH(QString ph){
+  pwdHash = ph;
 }
 
 void UserAccount::setPwd(const QString& password){

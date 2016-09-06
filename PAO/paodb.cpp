@@ -1,6 +1,8 @@
 #include "paodb.h"
 
-//PaoDB() : visits(new PaoContainer()){}
+PaoDB::PaoDB() : visits(new PaoContainer()){
+
+}
 
 void PaoDB::readUsers(const QJsonObject& js){
   QJsonArray UserArray = js["Users"].toArray();
@@ -25,6 +27,12 @@ void PaoDB::readAnimals(const QJsonObject& js){
     if(animal_js["type"].toString() == "Pet")
       insertAnimal(new Pet(animal_js));
   }
+}
+
+AbstractVisit* PaoDB::obtainVisit(int i){
+  for (PaoContainer::iterator it = visits->begin(); it != visits->end() && i >=0; it++, i--)
+    if (i == 0)
+      return (*(visits))[it];
 }
 
 void PaoDB::readVisits(const QJsonObject& js){
@@ -65,7 +73,7 @@ void PaoDB::writeUsers(QJsonObject& js) const{
 void PaoDB::writeAnimals(QJsonObject& js) const{
   QJsonArray jsonAnimals;
 
-  QMap<unsigned int, Animal*>::const_iterator itAnimals;
+  QMap<QString, Animal*>::const_iterator itAnimals;
 
   for (itAnimals = animals.constBegin(); itAnimals != animals.constEnd(); ++itAnimals){
       QJsonObject animalObj;
@@ -79,7 +87,7 @@ void PaoDB::writeAnimals(QJsonObject& js) const{
 void PaoDB::writeVisits(QJsonObject& js) const{
   QJsonArray jsonVisits;
 
-  for (PaoContainer::const_iterator itVisits = visits.const_begin(); itVisits != visits.const_end(); itVisits++){
+  for (PaoContainer::const_iterator itVisits = visits->const_begin(); itVisits != visits->const_end(); itVisits++){
     QJsonObject visitObj;
 
     itVisits->saveObj(visitObj);
@@ -170,37 +178,56 @@ bool PaoDB::loadVisits(){
 }
 
 void PaoDB::insertUser(AbstractOwner* abso){
-  users.insert(abso->getFiscalCode(),abso);
+  QString fC = abso->getFiscalCode();
+  users.insert(fC,abso);
 }
 
 void PaoDB::insertAnimal(Animal* absa){
-  animals.insert(absa->getAnimalID(),absa);
+  animals.insert(absa->getAnimalCode(),absa);
 }
 
 void PaoDB::insertVisitFront(AbstractVisit* absv){
-  visits.push_front(absv);
+  visits->push_front(absv);
 }
 
 void PaoDB::insertVisitBack(AbstractVisit* absv){
-  visits.push_back(absv);
+  visits->push_back(absv);
 }
 
-QMap<QString, AbstractOwner*> PaoDB::getUserList() const{
+QMap<QString, AbstractOwner*> PaoDB::getUserList(){
  return users;
 }
 
-QMap<unsigned int, Animal*> PaoDB::getAnimalList() const{
+QMap<QString, Animal*> PaoDB::getAnimalList() const{
   return animals;
+}
+
+PaoContainer* PaoDB::getVisitList() const{
+  return visits;
+}
+
+bool PaoDB::containVisit(QString k) const{
+  return visits->contains(k);
+}
+
+void PaoDB::editVisit(const QString visitC, QString cv, QString n, double p){
+  bool trovato = false;
+  for (PaoContainer::iterator it = visits->begin(); it != visits->end() && !trovato; it++){
+    if (it->getVisitCode() == visitC ){
+      it->editAbsVisit(cv,n,p);
+       trovato = true;
+     }
+   }
 }
 
 void PaoDB::removeUser(const QString& userID){
   users.remove(userID);
 }
 
-void PaoDB::removeAnimal(const unsigned int aID){
+void PaoDB::removeAnimal(QString aID){
   animals.remove(aID);
 }
 
-void PaoDB::removeVisit(const QDateTime& d, const unsigned int aid){
-  visits.remove(d,aid);
+void PaoDB::removeVisit(QString vtr){
+  visits->remove(vtr);
 }

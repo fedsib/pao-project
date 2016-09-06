@@ -80,7 +80,9 @@ class PaoContainer{
 
     int size() const;
     bool isEmpty() const;
-    void remove(const QDateTime&, const unsigned int);
+    bool contains(QString) const;
+    AbstractVisit* obtainVisitForEdit(QString key);
+    void remove(QString);
     void push_front(AbstractVisit*);
     void push_back(AbstractVisit*);
 

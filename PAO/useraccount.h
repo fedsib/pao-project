@@ -10,17 +10,17 @@
 
 class UserAccount{
   private:
-    QString pwdHash;            //Is the hash converted to QString, not the plain text pwd
+    QString pwdHash;            //It's the hash converted to QString, not the plain text pwd
     bool Vet;
   public:
     UserAccount();
     UserAccount(const QString&, bool=false);
-    UserAccount(const QJsonObject&);
 
     QString getPwdHash() const;
     bool isVet() const;
 
-    bool match(const QString&)const ;
+    bool match(const QString&) const ;
+    void setPwdH(QString);
     void setPwd(const QString&);
     void setVet(bool);
 

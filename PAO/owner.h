@@ -8,17 +8,17 @@
 
 class Owner : public AbstractOwner {
   private:
-    UserData userInfo;
+    UserData* userInfo;
 
   public:
-    Owner();
-    Owner(const UserData&);
+    Owner(const QString);
+    Owner(const QString&, UserAccount*, UserData*);
     Owner(const QJsonObject&);
 
-    UserData& getUserInfo() const;
+    UserData* getUserInfo() const;
 
-    virtual QString typeOfUser() const override;
-    virtual void saveObj(QJsonObject&) override;
+    virtual QString typeOfUser() const;
+    virtual void saveObj(QJsonObject&);
 };
 
 #endif // OWNER_H

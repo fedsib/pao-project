@@ -5,7 +5,7 @@
 
 #include<QMap>
 #include <QFile>
-#include <QJsonObject>
+//#include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonArray>
 
@@ -19,8 +19,8 @@
 class PaoDB{
   private:
     QMap<QString, AbstractOwner*> users;
-    QMap<unsigned int, Animal*> animals;
-    PaoContainer visits;
+    QMap<QString, Animal*> animals;
+    PaoContainer* visits;
     void readUsers(const QJsonObject&);
     void readAnimals(const QJsonObject&);
     void readVisits(const QJsonObject&);
@@ -29,9 +29,9 @@ class PaoDB{
     void writeAnimals(QJsonObject&) const;
     void writeVisits(QJsonObject&) const;
 
-  public:
 
-    //PaoDB();
+  public:
+    PaoDB();
     bool saveUsers();
     bool loadUsers();
 
@@ -46,13 +46,17 @@ class PaoDB{
     void insertVisitFront(AbstractVisit*);
     void insertVisitBack(AbstractVisit*);
 
-    void removeUser(const QString&);
-    void removeAnimal(const unsigned int);
-    void removeVisit(const QDateTime&, const unsigned int);
+    bool containVisit(QString) const;
+    AbstractVisit* obtainVisit(int);
+    void editVisit(const QString, QString,QString,double);
 
-    QMap<QString, AbstractOwner*> getUserList() const;
-    QMap<unsigned int, Animal*> getAnimalList() const;
-    //PaoContainer getContainer() const;
+    void removeUser(const QString&);
+    void removeAnimal(QString);
+    void removeVisit(QString);
+
+    QMap<QString, AbstractOwner*> getUserList();
+    QMap<QString, Animal*> getAnimalList() const;
+    PaoContainer* getVisitList() const;
 
 };
 

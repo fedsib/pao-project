@@ -8,14 +8,12 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QMAKE_CXXFLAGS += -std=c++11
-
 TARGET = PAO
 TEMPLATE = app
-
+INCLUDEPATH += .
+DEPENDPATH += .
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     userdata.cpp \
     paocontainer.cpp \
     paodb.cpp \
@@ -29,9 +27,15 @@ SOURCES += main.cpp\
     basicvisit.cpp \
     specializedvisit.cpp \
     vaccinevisit.cpp \
-    useraccount.cpp
+    useraccount.cpp \
+    vetview.cpp \
+    vetcontrol.cpp \
+    addownerdialog.cpp \
+    addanimaldialog.cpp \
+    addvisitdialog.cpp \
+    editvisitdialog.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     userdata.h \
     paocontainer.h \
     paodb.h \
@@ -45,4 +49,10 @@ HEADERS  += mainwindow.h \
     basicvisit.h \
     specializedvisit.h \
     vaccinevisit.h \
-    useraccount.h
+    useraccount.h \
+    vetview.h \
+    vetcontrol.h \
+    addownerdialog.h \
+    addanimaldialog.h \
+    addvisitdialog.h \
+    editvisitdialog.h

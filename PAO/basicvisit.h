@@ -8,13 +8,12 @@
 class BasicVisit : public AbstractVisit{
 
   public:
-
-    BasicVisit();
+    BasicVisit(const QDate& , const QString&, const unsigned int, QString="", double=20);
     BasicVisit(const QJsonObject&);
-    virtual double calcPrice() const override;
-    virtual QString typeOfVisit() const override;
+    virtual double calcPrice() const;
+    virtual QString typeOfVisit() const;
 
-    virtual void saveObj(QJsonObject&) const override;
+    virtual void saveObj(QJsonObject&) const;
 };
 
 #endif // BASICVISIT_H

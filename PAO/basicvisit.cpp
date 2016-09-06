@@ -1,6 +1,6 @@
 #include "basicvisit.h"
 
-BasicVisit::BasicVisit(){}
+BasicVisit::BasicVisit(const QDate& dt, const QString& idv, const unsigned int aid, QString no, double bp) : AbstractVisit(dt,idv,aid,no,bp){}
 BasicVisit::BasicVisit(const QJsonObject&js) : AbstractVisit(js){}
 
 double BasicVisit::calcPrice() const{

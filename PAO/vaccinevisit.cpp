@@ -1,6 +1,6 @@
 #include "vaccinevisit.h"
 
-VaccineVisit::VaccineVisit(){}
+VaccineVisit::VaccineVisit(const QDate& dt, const QString& idv, const unsigned int aid, QString no, double bp) : AbstractVisit(dt,idv,aid,no,bp){}
 VaccineVisit::VaccineVisit(const QJsonObject& js) : AbstractVisit(js){}
 
 double VaccineVisit::calcPrice() const{

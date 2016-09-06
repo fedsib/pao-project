@@ -1,8 +1,11 @@
 #include "pet.h"
 
-Pet::Pet(){}
+Pet::Pet(const QString& oID, const unsigned int aID) : Animal(oID,aID){}
 
-Pet::Pet(const QString& b, const QString& f, const QString& c) : breed(b), fur(f), category(c) {}
+Pet::Pet(const QString& oID, const unsigned int aID, const AnimalData& aData) : Animal(oID,aID,aData) {}
+
+Pet::Pet(const QString& oID, const unsigned int aID, const AnimalData& aData, const QString& b,
+         const QString& f, const QString& c) : Animal(oID,aID,aData), breed(b), fur(f), category(c) {}
 
 Pet::Pet(const QJsonObject& js) : Animal(js), breed(js["breed"].toString()), fur(js["fur"].toString()), category(js["category"].toString()){}
 

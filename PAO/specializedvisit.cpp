@@ -1,6 +1,6 @@
 #include "specializedvisit.h"
 
-SpecializedVisit::SpecializedVisit(){}
+SpecializedVisit::SpecializedVisit(const QDate& dt, const QString& idv, const unsigned int aid, QString no, double bp) : AbstractVisit(dt,idv,aid,no,bp){}
 SpecializedVisit::SpecializedVisit(const QJsonObject& js) : AbstractVisit(js){}
 
 double SpecializedVisit::calcPrice() const{

@@ -12,8 +12,9 @@ class Pet: public Animal{
     QString category;
 
   public:
-    Pet();
-    Pet(const QString&, const QString&, const QString&);
+    Pet(const QString&, const unsigned int);
+    Pet(const QString&, const unsigned int, const AnimalData&);
+    Pet(const QString&, const unsigned int, const AnimalData&, const QString&, const QString&, const QString&);
     Pet(const QJsonObject&);
 
     QString getBreed() const;
@@ -24,8 +25,8 @@ class Pet: public Animal{
     void setFur(const QString&);
     void setCategory(const QString&);
 
-    virtual QString typeOfAnimal() const override;
-    virtual void saveObj(QJsonObject&) override;
+    virtual QString typeOfAnimal() const;
+    virtual void saveObj(QJsonObject&);
 };
 
 #endif // PET_H

@@ -129,7 +129,7 @@ PaoContainer::PaoContainer(const PaoContainer& pc) : sp_head(pc.sp_head) {
 }
 
 AbstractVisit* PaoContainer::operator[](iterator iter) const{
-  return iter.it.punt->info;
+  return iter.it->info;
 }
 
 int PaoContainer::size() const{
@@ -140,13 +140,22 @@ bool PaoContainer::isEmpty() const{
   return container_size == 0;
 }
 
-void PaoContainer::remove(const QDateTime& dt, const unsigned int aID){
+bool PaoContainer::contains(QString key) const{
+    PaoContainer::const_iterator it = this->const_begin();
+    for (; it != this->const_end(); ++it){
+       if (it->getVisitCode() == key)
+            return true;
+    }
+    return false;
+}
+
+void PaoContainer::remove(QString cv){
   smartPointer p = sp_head;
   smartPointer prec, copy;
   smartPointer origin = sp_head;
   sp_head = 0;
 
-  while (p!=0 && !(p->info->getDate() == dt && p->info->getAnimalID() == aID)){
+  while (p!=0 && !(p->info->getVisitCode() == cv)){
     copy = new PaoContainer::node(p->info, p->next);
     if(prec ==0)
       sp_head = copy;
