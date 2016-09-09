@@ -6,18 +6,18 @@
 
 #include"contactinfo.h"
 
-/*Describe the basic data of a PAO user*/
+/*Describe the basic data of a PAO owner*/
 
-class UserData{
+class OwnerData{
   private:
     QString name;
     QString surname;
     ContactInfo contacts;
 
   public:
-    UserData();
-    UserData(const QString&, const QString&, const ContactInfo&);
-    UserData(const QJsonObject&);
+    OwnerData();
+    OwnerData(const QString&, const QString&, const ContactInfo&);
+    OwnerData(const QJsonObject&);
 
     QString getName() const;
     QString getSurname() const;
@@ -27,7 +27,7 @@ class UserData{
     void setSurname(const QString&);
     void setContacts(const QString&, const QString&, const QString&);
 
-    void saveUserDataToFile(QJsonObject&);
+    void saveOwnerDataToFile(QJsonObject&);
 };
 
 #endif // USERDATA_H

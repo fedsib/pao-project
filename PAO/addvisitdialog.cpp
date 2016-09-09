@@ -90,13 +90,23 @@ void AddVisitDialog::createVisitAndExit(){
   if(bp <20)
     bp = 20;
 
-  if(basicRB->isChecked()){
-    vetc->insertVisitOnDB(new BasicVisit(dt,vID,aID,nt,bp));
-  }
-  else if(vaccineRB->isChecked()){
-    vetc->insertVisitOnDB(new VaccineVisit(dt,vID,aID,nt,bp));
-  }
-  else {
-    vetc->insertVisitOnDB(new SpecializedVisit(dt,vID,aID,nt,bp));
-  }
+  if(vID == "")
+    cfv_led->setStyleSheet("QLineEdit { border : 2px solid red;}");
+  else cfv_led->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(animalID_led->text() == "")
+    animalID_led->setStyleSheet("QLineEdit { border : 2px solid red;}");
+  else animalID_led->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(vID != "" && aID != 0){
+    if(basicRB->isChecked()){
+      vetc->insertVisitOnDB(new BasicVisit(dt,vID,aID,nt,bp));
+    }
+    else if(vaccineRB->isChecked()){
+      vetc->insertVisitOnDB(new VaccineVisit(dt,vID,aID,nt,bp));
+    }
+    else {
+      vetc->insertVisitOnDB(new SpecializedVisit(dt,vID,aID,nt,bp));
+    }
+   }
 }

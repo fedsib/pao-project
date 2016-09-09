@@ -3,21 +3,21 @@
 
 /*Represent a private owner of animals. */
 
-#include"userdata.h"
+#include"ownerdata.h"
 #include"abstractowner.h"
 
 class Owner : public AbstractOwner {
   private:
-    UserData* userInfo;
+    OwnerData* ownerInfo;
 
   public:
     Owner(const QString);
-    Owner(const QString&, UserAccount*, UserData*);
+    Owner(const QString&, OwnerAccount*, OwnerData*);
     Owner(const QJsonObject&);
 
-    UserData* getUserInfo() const;
+    OwnerData* getOwnerInfo() const;
 
-    virtual QString typeOfUser() const;
+    virtual QString typeOfOwner() const;
     virtual void saveObj(QJsonObject&);
 };
 

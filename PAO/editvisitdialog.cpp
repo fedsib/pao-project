@@ -1,7 +1,5 @@
 #include "editvisitdialog.h"
 
-#include "addvisitdialog.h"
-
 EditVisitDialog::EditVisitDialog(QWidget* parent , VetControl* vc, AbstractVisit* vte) : QDialog(parent), vetc(vc),editVis(vte){
   if(editVis){
   prepareGUI();
@@ -64,7 +62,7 @@ void EditVisitDialog::prepareGUI(){
   mainLayout->addWidget(buttonbox);
 
   setLayout(mainLayout);
-  setWindowTitle(tr("Aggiungi nuova visita"));
+  setWindowTitle(tr("Modifica visita"));
   setFixedSize(400,500);
 }
 

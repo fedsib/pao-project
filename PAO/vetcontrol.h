@@ -26,15 +26,15 @@ class VetControl : public QObject{
     VetView* vv;
     PaoDB* db;
     QTableWidget* tbl;
-    QComboBox* s_combo;
-    QLineEdit* s_led;
+    QLineEdit* so_led;
+    QLineEdit* sa_led;
     QDateEdit* s_ded;
     AddOwnerDialog* addOwnerDialog;
     AddAnimalDialog* addAnimalDialog;
     AddVisitDialog* addVisitDialog;
     EditVisitDialog* editVisitDialog;
 
-    void loadUsers();
+    void loadOwners();
     void loadAs();
     void loadVisits();
 
@@ -44,7 +44,7 @@ class VetControl : public QObject{
     void putInTable(const QStringList& NH);
 
   public:
-    VetControl(VetView*, PaoDB*, QTableWidget*,QComboBox*, QLineEdit*, QDateEdit*);
+    VetControl(VetView*, PaoDB*, QTableWidget*);
     void saveWhenExit();
     void showOwnersInTable();
     void showAnimalsInTable();
@@ -60,6 +60,8 @@ class VetControl : public QObject{
     void deleteOwner();
     void deleteAnimal();
     void deleteVisit();
+
+    //void searchAndShowOwners(const QString &);
 
     void openAddOwnerDialog();
     void openAddAnimalDialog();

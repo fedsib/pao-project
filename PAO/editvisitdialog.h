@@ -2,14 +2,7 @@
 #define EDITVISITDIALOG_H
 
 #include <QDialog>
-//#include <QGroupBox>
-#include <QLabel>
-//#include <QLineEdit>
 #include <QPushButton>
-//#include <QDialogButtonBox>
-//#include <QVBoxLayout>
-//#include <QHBoxLayout>
-//#include <QFormLayout>
 
 #include "basicvisit.h"
 #include "specializedvisit.h"
@@ -41,7 +34,7 @@ class EditVisitDialog : public QDialog {
     void prepareConnections();
 
   public:
-    explicit EditVisitDialog(QWidget* , VetControl*, AbstractVisit*);
+    explicit EditVisitDialog(QWidget* = 0 , VetControl* = 0, AbstractVisit* = 0);
 
   public slots:
     void editVisitAndExit();

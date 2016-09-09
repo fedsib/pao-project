@@ -1,18 +1,20 @@
 #include "paodb.h"
 
+
+
 PaoDB::PaoDB() : visits(new PaoContainer()){
 
 }
 
-void PaoDB::readUsers(const QJsonObject& js){
-  QJsonArray UserArray = js["Users"].toArray();
+void PaoDB::readOwners(const QJsonObject& js){
+  QJsonArray OwnerArray = js["Owners"].toArray();
 
-   int size = UserArray.size();
+   int size = OwnerArray.size();
 
    for (int i = 0; i < size; i++){
-     QJsonObject user_js = UserArray[i].toObject();
-     if(user_js["type"].toString() == "Owner")
-       insertUser(new Owner(user_js));
+     QJsonObject owner_js = OwnerArray[i].toObject();
+     if(owner_js["type"].toString() == "Owner")
+       insertOwner(new Owner(owner_js));
    }
 }
 
@@ -56,18 +58,18 @@ void PaoDB::readVisits(const QJsonObject& js){
   }
 }
 
-void PaoDB::writeUsers(QJsonObject& js) const{
-  QJsonArray jsonUsers;
+void PaoDB::writeOwners(QJsonObject& js) const{
+  QJsonArray jsonOwners;
 
-  QMap<QString, AbstractOwner*>::const_iterator itUsers;
+  QMap<QString, AbstractOwner*>::const_iterator itOwners;
 
-  for (itUsers = users.constBegin(); itUsers != users.constEnd(); ++itUsers){
-    QJsonObject userObj;
+  for (itOwners = owners.constBegin(); itOwners != owners.constEnd(); ++itOwners){
+    QJsonObject ownerObj;
 
-    (*itUsers)->saveObj(userObj);
-    jsonUsers.append(userObj);
+    (*itOwners)->saveObj(ownerObj);
+    jsonOwners.append(ownerObj);
   }
-  js["Users"] = jsonUsers;
+  js["Owners"] = jsonOwners;
 }
 
 void PaoDB::writeAnimals(QJsonObject& js) const{
@@ -96,30 +98,29 @@ void PaoDB::writeVisits(QJsonObject& js) const{
   js["Visits"] = jsonVisits;
 }
 
-bool PaoDB::saveUsers(){
-  QFile userDB("users.json");
+bool PaoDB::saveOwners(){
+  QFile ownerDB("owners.json");
 
-  if (!userDB.open(QIODevice::WriteOnly)){
-    qWarning("Couldn't open userDB file.");
+  if (!ownerDB.open(QIODevice::WriteOnly)){
+    qWarning("Couldn't open ownerDB file.");
     return false;
   }
 
-  QJsonObject userjs;
-  writeUsers(userjs);
-  QJsonDocument docSaveUsers(userjs);
-  userDB.write(docSaveUsers.toJson());
+  QJsonObject ownerjs;
+  writeOwners(ownerjs);
+  QJsonDocument docSaveOwners(ownerjs);
+  ownerDB.write(docSaveOwners.toJson());
   return true;
 }
 
-bool PaoDB::loadUsers(){
-  QFile userDB("users.json");
-  if (!userDB.open(QIODevice::ReadOnly))
+bool PaoDB::loadOwners(){
+  QFile ownerDB("owners.json");
+  if (!ownerDB.open(QIODevice::ReadOnly))
     return false;
 
-  QByteArray us_data = userDB.readAll();
-  QJsonDocument docLoadUsers(QJsonDocument::fromJson(us_data));
-  QString content = docLoadUsers.toJson(QJsonDocument::Indented);
-  readUsers(docLoadUsers.object());
+  QByteArray us_data = ownerDB.readAll();
+  QJsonDocument docLoadOwners(QJsonDocument::fromJson(us_data));
+  readOwners(docLoadOwners.object());
   return true;
 }
 
@@ -145,7 +146,6 @@ bool PaoDB::loadAnimals(){
 
     QByteArray an_data = animalDB.readAll();
     QJsonDocument docLoadanimals(QJsonDocument::fromJson(an_data));
-    QString content = docLoadanimals.toJson(QJsonDocument::Indented);
     readAnimals(docLoadanimals.object());
     return true;
 }
@@ -172,14 +172,13 @@ bool PaoDB::loadVisits(){
 
     QByteArray vs_data = visitDB.readAll();
     QJsonDocument docLoadvisits(QJsonDocument::fromJson(vs_data));
-    QString content = docLoadvisits.toJson(QJsonDocument::Indented);
     readVisits(docLoadvisits.object());
     return true;
 }
 
-void PaoDB::insertUser(AbstractOwner* abso){
+void PaoDB::insertOwner(AbstractOwner* abso){
   QString fC = abso->getFiscalCode();
-  users.insert(fC,abso);
+  owners.insert(fC,abso);
 }
 
 void PaoDB::insertAnimal(Animal* absa){
@@ -194,8 +193,8 @@ void PaoDB::insertVisitBack(AbstractVisit* absv){
   visits->push_back(absv);
 }
 
-QMap<QString, AbstractOwner*> PaoDB::getUserList(){
- return users;
+QMap<QString, AbstractOwner*> PaoDB::getOwnerList(){
+ return owners;
 }
 
 QMap<QString, Animal*> PaoDB::getAnimalList() const{
@@ -220,8 +219,8 @@ void PaoDB::editVisit(const QString visitC, QString cv, QString n, double p){
    }
 }
 
-void PaoDB::removeUser(const QString& userID){
-  users.remove(userID);
+void PaoDB::removeOwner(const QString& ownerID){
+  owners.remove(ownerID);
 }
 
 void PaoDB::removeAnimal(QString aID){

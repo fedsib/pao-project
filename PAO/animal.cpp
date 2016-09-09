@@ -8,7 +8,7 @@ Animal::Animal(const QString& oID, const unsigned int aid, const AnimalData& dat
   setAnimalCode();
 }
 
-Animal::Animal(const QJsonObject& js) : ownerID(js["owner"].toString()), animalID(static_cast<unsigned int>(js["CF"].toInt())){
+Animal::Animal(const QJsonObject& js) : ownerID(js["owner"].toString()), animalID(static_cast<unsigned int>(js["animalID"].toInt())){
   animalInfo.setName(js["name"].toString());
   animalInfo.setDateOfBirth(QDate::fromString(js["birth"].toString(),"d'MM'MMcaryyyy"));
   animalInfo.setSex(js["sex"].toString());

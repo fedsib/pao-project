@@ -14,7 +14,7 @@ INCLUDEPATH += .
 DEPENDPATH += .
 
 SOURCES += main.cpp\
-    userdata.cpp \
+    ownerdata.cpp \
     paocontainer.cpp \
     paodb.cpp \
     contactinfo.cpp \
@@ -27,7 +27,7 @@ SOURCES += main.cpp\
     basicvisit.cpp \
     specializedvisit.cpp \
     vaccinevisit.cpp \
-    useraccount.cpp \
+    owneraccount.cpp \
     vetview.cpp \
     vetcontrol.cpp \
     addownerdialog.cpp \
@@ -36,7 +36,7 @@ SOURCES += main.cpp\
     editvisitdialog.cpp
 
 HEADERS  += \
-    userdata.h \
+    ownerdata.h \
     paocontainer.h \
     paodb.h \
     contactinfo.h \
@@ -49,7 +49,7 @@ HEADERS  += \
     basicvisit.h \
     specializedvisit.h \
     vaccinevisit.h \
-    useraccount.h \
+    owneraccount.h \
     vetview.h \
     vetcontrol.h \
     addownerdialog.h \

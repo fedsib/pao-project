@@ -18,22 +18,22 @@
 
 class PaoDB{
   private:
-    QMap<QString, AbstractOwner*> users;
+    QMap<QString, AbstractOwner*> owners;
     QMap<QString, Animal*> animals;
     PaoContainer* visits;
-    void readUsers(const QJsonObject&);
+    void readOwners(const QJsonObject&);
     void readAnimals(const QJsonObject&);
     void readVisits(const QJsonObject&);
 
-    void writeUsers(QJsonObject&) const;
+    void writeOwners(QJsonObject&) const;
     void writeAnimals(QJsonObject&) const;
     void writeVisits(QJsonObject&) const;
 
 
   public:
     PaoDB();
-    bool saveUsers();
-    bool loadUsers();
+    bool saveOwners();
+    bool loadOwners();
 
     bool saveAnimals();
     bool loadAnimals();
@@ -41,7 +41,7 @@ class PaoDB{
     bool saveVisits();
     bool loadVisits();
 
-    void insertUser(AbstractOwner*);
+    void insertOwner(AbstractOwner*);
     void insertAnimal(Animal*);
     void insertVisitFront(AbstractVisit*);
     void insertVisitBack(AbstractVisit*);
@@ -50,11 +50,11 @@ class PaoDB{
     AbstractVisit* obtainVisit(int);
     void editVisit(const QString, QString,QString,double);
 
-    void removeUser(const QString&);
+    void removeOwner(const QString&);
     void removeAnimal(QString);
     void removeVisit(QString);
 
-    QMap<QString, AbstractOwner*> getUserList();
+    QMap<QString, AbstractOwner*> getOwnerList();
     QMap<QString, Animal*> getAnimalList() const;
     PaoContainer* getVisitList() const;
 

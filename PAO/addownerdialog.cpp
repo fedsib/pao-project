@@ -81,15 +81,28 @@ void AddOwnerDialog::prepareConnections(){
 }
 
 void AddOwnerDialog::createOwnerAndExit(){
-QString cod = cf_le->text();
-QString nm = n_le->text();
-QString sur = sn_le->text();
-QString addre = addr_le->text();
-QString mai = m_le->text();
-QString pho = ph_le->text();
-bool isVeter = vetRB->isChecked();
-QString pw = pw_le->text();
+  QString cod = cf_le->text();
+  QString nm = n_le->text();
+  QString sur = sn_le->text();
+  QString addre = addr_le->text();
+  QString mai = m_le->text();
+  QString pho = ph_le->text();
+  bool isVeter = vetRB->isChecked();
+  QString pw = pw_le->text();
+  ContactInfo ci(addre,mai,pho);
 
-ContactInfo ci(addre,mai,pho);
-vetc->insertOwnerOnDB(new Owner(cod, (new UserAccount(pw,isVeter)), new UserData(nm,sur,ci)));     //may cause dangling pointer
+  if(cod == "")
+    cf_le->setStyleSheet("QLineEdit { border : 2px solid red;}");
+  else cf_le->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(nm == "")
+      n_le->setStyleSheet("QLineEdit { border : 2px solid red;}");
+  else n_le->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(sur == "")
+    sn_le->setStyleSheet("QLineEdit { border : 2px solid red;}");
+  else sn_le->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(cod != "" && nm != "" && sur!= "" )
+    vetc->insertOwnerOnDB(new Owner(cod, (new OwnerAccount(pw,isVeter)), new OwnerData(nm,sur,ci)));
 }

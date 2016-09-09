@@ -24,8 +24,8 @@ HEADERS += PAO/abstractowner.h \
            PAO/paodb.h \
            PAO/pet.h \
            PAO/specializedvisit.h \
-           PAO/useraccount.h \
-           PAO/userdata.h \
+           PAO/owneraccount.h \
+           PAO/ownerdata.h \
            PAO/vaccinevisit.h \
            PAO/vetcontrol.h \
            PAO/vetview.h
@@ -44,8 +44,8 @@ SOURCES += PAO/abstractowner.cpp \
            PAO/paodb.cpp \
            PAO/pet.cpp \
            PAO/specializedvisit.cpp \
-           PAO/useraccount.cpp \
-           PAO/userdata.cpp \
+           PAO/owneraccount.cpp \
+           PAO/ownerdata.cpp \
            PAO/vaccinevisit.cpp \
            PAO/vetcontrol.cpp \
            PAO/vetview.cpp

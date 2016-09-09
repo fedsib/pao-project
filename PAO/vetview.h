@@ -1,14 +1,10 @@
 #ifndef VetView_H
 #define VetView_H
 
-//#include <QLabel>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QTableWidget>
 #include <QGridLayout>
-//#include <QVBoxLayout>
-//#include <QHBoxLayout>
-//#include <QPushButton>
 #include <QGroupBox>
 #include <QStringList>
 #include <QMessageBox>
@@ -47,9 +43,7 @@ class VetView : public QMainWindow{
     QPushButton* removeVisitButton;
     QPushButton* exitButton;
 
-    QComboBox* search_combo;
-    QLineEdit* search_led;
-    QDateEdit* search_ded;
+    QComboBox* view_combo;
 
     QTableWidget* Base_tb;
 
@@ -63,13 +57,13 @@ class VetView : public QMainWindow{
     void showAnimalGroupBox();
     void showVisitGroupBox();
 
-    void prepareOwnerTable();
-    void prepareAnimalTable();
-    void prepareVisitTable();
-
     void OwnerSearchBehaviour();
     void AnimalSearchBehaviour();
     void VisitSearchBehaviour();
+
+    void prepareOwnerTable();
+    void prepareAnimalTable();
+    void prepareVisitTable();
 
     void prepareGUI();
     void prepareConnections();

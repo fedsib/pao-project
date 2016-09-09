@@ -1,14 +1,13 @@
 #include "vetview.h"
 
-//VetView::VetView(QWidget* parent, PaoDB* pdb)
 VetView::VetView(QWidget* parent) : QMainWindow(parent){
-  setMinimumSize(1500,700);
+  setMinimumSize(1650,700);
   prepareGUI();
   db = new PaoDB();
-  db->loadUsers();
+  db->loadOwners();
   db->loadAnimals();
   db->loadVisits();
-  contr = new VetControl(this,db,Base_tb,search_combo,search_led,search_ded); //maybe other things?
+  contr = new VetControl(this,db,Base_tb);
   prepareConnections();
 }
 
@@ -22,15 +21,12 @@ void VetView::prepareGUI(){
   fakeView = new QWidget(this);
   exitButton = new QPushButton(tr("Esci"));
 
-  search_combo = new QComboBox;
-  search_led = new QLineEdit;
-  search_ded = new QDateEdit;
-
+  view_combo = new QComboBox;
   Base_tb = new QTableWidget;
 
-  search_combo->addItem("Cerca proprietari");
-  search_combo->addItem("Cerca animali");
-  search_combo->addItem("Cerca visite");
+  view_combo->addItem("Cerca proprietari");
+  view_combo->addItem("Cerca animali");
+  view_combo->addItem("Cerca visite");
 
   createADDGroupBox();
   createCentralGroupBox();
@@ -62,21 +58,19 @@ void VetView::prepareConnections(){
   connect(editAnimalButton, SIGNAL(clicked()), contr, SLOT(openEditAnimalDialog()));
   connect(editVisitButton, SIGNAL(clicked()), contr, SLOT(openEditVisitDialog()));
 
-  connect(search_combo,SIGNAL(currentIndexChanged(int)), this, SLOT(chooseBehaviour(int)));
-  //connect(searchEdit, SIGNAL(textChanged(QString)), contr, SLOT(showItemsInTable(QString)));
+  connect(view_combo,SIGNAL(currentIndexChanged(int)), this, SLOT(chooseBehaviour(int)));
 
   connect(removeOwnerButton, SIGNAL(clicked()), contr, SLOT(deleteOwner()));
   connect(removeAnimalButton, SIGNAL(clicked()), contr, SLOT(deleteAnimal()));
   connect(removeVisitButton, SIGNAL(clicked()), contr, SLOT(deleteVisit()));
 
-  //connect(exitButton, SIGNAL(clicked()), this, SLOT(close()));
   connect(exitButton, SIGNAL(clicked()), this, SLOT(saveOnExit()));
 }
 
 void VetView::createADDGroupBox(){
 
   addGroupBox  = new QGroupBox(tr("Aggiungi"));
-  addGroupBox->setMaximumWidth(200);
+  addGroupBox->setMaximumWidth(180);
 
   addOwnerButton = new QPushButton(tr("&Aggiungi Proprietario"));
   addAnimalButton = new QPushButton(tr("&Aggiungi Animale"));
@@ -91,7 +85,7 @@ void VetView::createADDGroupBox(){
 
 void VetView::createOwnerGroupBox(){
   OwnerGroupBox  = new QGroupBox(tr("Operazioni su utente"));
-  OwnerGroupBox->setMaximumWidth(200);
+  OwnerGroupBox->setMaximumWidth(180);
 
   QVBoxLayout* Ownerlayout = new QVBoxLayout;
 
@@ -101,12 +95,11 @@ void VetView::createOwnerGroupBox(){
   Ownerlayout->addWidget(editOwnerButton);
   Ownerlayout->addWidget(removeOwnerButton);
   OwnerGroupBox->setLayout(Ownerlayout);
-  //return OwnerGroupBox;
 }
 
 void VetView::createAnimalGroupBox(){
   AnimalGroupBox  = new QGroupBox(tr("Operazioni su animale"));
-  AnimalGroupBox->setMaximumWidth(200);
+  AnimalGroupBox->setMaximumWidth(180);
   QVBoxLayout* Animallayout = new QVBoxLayout;
 
   editAnimalButton = new QPushButton(tr("&Modifica Animale"));
@@ -119,7 +112,7 @@ void VetView::createAnimalGroupBox(){
 
 void VetView::createVisitGroupBox(){
   VisitGroupBox  = new QGroupBox(tr("Operazioni su visita"));
-  VisitGroupBox->setMaximumWidth(200);
+  VisitGroupBox->setMaximumWidth(180);
   QVBoxLayout* Visitlayout = new QVBoxLayout;
 
   editVisitButton = new QPushButton(tr("&Modifica Visita"));
@@ -134,10 +127,8 @@ void VetView::createCentralGroupBox(){
   centralGroupBox  = new QGroupBox(tr("Ricerca"));
 
   QGridLayout* centralGrid = new QGridLayout();
-  search_ded->hide();
-  centralGrid->addWidget(search_combo, 0,0,1,2);
-  centralGrid->addWidget(search_led, 0,2,1,4);
-  centralGrid->addWidget(search_ded, 1,2,1,4);
+
+  centralGrid->addWidget(view_combo, 0,0,1,2);
   centralGrid->addWidget(Base_tb, 2,0,7,6);
   centralGrid->addWidget(exitButton, 9, 1, 2, 4);
   centralGroupBox->setLayout(centralGrid);
@@ -172,7 +163,7 @@ void VetView::prepareOwnerTable(){
 
 void VetView::prepareAnimalTable(){
   QStringList h;
-  h << "Chip" << "CF Proprietario" << "Nome" << "Data di Nascita" << "Sesso" << "Peso" << "Razza" << "Tipo" << "Data Applicazione Chip" << "Pelo";
+  h << "Chip" << "CF Proprietario" << "Nome" << "Data di Nascita" << "Sesso" << "Peso in Kg" << "Razza" << "Tipo" << "Applicazione ID" << "Pelo";
 
   Base_tb->setColumnCount(10);
   Base_tb->setHorizontalHeaderLabels(h);
@@ -198,37 +189,27 @@ void VetView::prepareTable(){
 void VetView::saveOnExit(){
   contr->saveWhenExit();
   close();
-  //login->show();
 }
-/*
-VetView::showOnOpening(QShowEvent*){
-
-}
-*/
 
 void VetView::OwnerSearchBehaviour(){
-  search_combo->setCurrentIndex(0); //used by vetControl
-  search_led->setPlaceholderText("Cerca Proprietario");
+  view_combo->setCurrentIndex(0);
   prepareOwnerTable();
   showOwnerGroupBox();
-  search_ded->hide();
-  //chiamata al controller per ricaricare gli elementi
+  contr->showOwnersInTable();
 }
 
 void VetView::AnimalSearchBehaviour(){
-  search_combo->setCurrentIndex(1);
-  search_led->setPlaceholderText("Cerca Animale");
+  view_combo->setCurrentIndex(1);
   prepareAnimalTable();
   showAnimalGroupBox();
-  search_ded->hide();
+  contr->showAnimalsInTable();
 }
 
 void VetView::VisitSearchBehaviour(){
-  search_combo->setCurrentIndex(2);
-  search_led->setPlaceholderText("Cerca Visita");
+  view_combo->setCurrentIndex(2);
   prepareVisitTable();
   showVisitGroupBox();
-  search_ded->show();
+  contr->showVisitsInTable();
 }
 
 //slots

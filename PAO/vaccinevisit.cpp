@@ -4,7 +4,7 @@ VaccineVisit::VaccineVisit(const QDate& dt, const QString& idv, const unsigned i
 VaccineVisit::VaccineVisit(const QJsonObject& js) : AbstractVisit(js){}
 
 double VaccineVisit::calcPrice() const{
-  return (basic_price*2)+(basic_price*2)*0.3;
+  return (basic_price*2);
 }
 QString VaccineVisit::typeOfVisit() const{
   return "VaccineVisit";

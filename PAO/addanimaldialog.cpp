@@ -28,7 +28,7 @@ void AddAnimalDialog::createPetGroupBox(){
   petGroupBox = new QGroupBox(tr("Contatti"));
   QFormLayout* petlayout = new QFormLayout;
   petlayout->addRow(new QLabel(tr("Razza:")), breed_led);
-  petlayout->addRow(new QLabel(tr("Pelo:")), fur_led);
+  petlayout->addRow(new QLabel(tr("Pelo/Piumaggio:")), fur_led);
   petlayout->addRow(new QLabel(tr("Tipo:")), category_combo);
   petGroupBox->setLayout(petlayout);
 }
@@ -94,6 +94,19 @@ void AddAnimalDialog::createAnimalAndExit(){
   QString owneID = ownerID_led->text();
   unsigned int anID = static_cast<unsigned int>(animalID_led->text().toInt());
   QString nm = name_led->text();
+
+  if(owneID == "")
+      ownerID_led->setStyleSheet("QLineEdit { border : 2px solid red;}");
+    else ownerID_led->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(animalID_led->text() == "")
+      animalID_led->setStyleSheet("QLineEdit { border : 2px solid red;}");
+    else animalID_led->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
+  if(nm == "")
+      name_led->setStyleSheet("QLineEdit { border : 2px solid red;}");
+    else name_led->setStyleSheet("QLineEdit { border: 1px solid grey; border-style: inset;}");
+
   QDate dob = dateofBirth_ded->date();
   QString sx = sex_combo->currentText();
   QDate idDate = IDApplication_ded->date();
@@ -104,5 +117,6 @@ void AddAnimalDialog::createAnimalAndExit(){
 
   AnimalData* ad = new AnimalData(nm,dob,sx,idDate,w);
 
-  vetc->insertAnimalOnDB(new Pet(owneID,anID,*ad,br,fu,atype));
+  if(owneID != "" && anID != 0 && nm != "")
+    vetc->insertAnimalOnDB(new Pet(owneID,anID,*ad,br,fu,atype));
 }
