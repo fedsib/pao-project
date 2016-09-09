@@ -1,10 +1,6 @@
 #include "paodb.h"
 
-
-
-PaoDB::PaoDB() : visits(new PaoContainer()){
-
-}
+PaoDB::PaoDB() : visits(new PaoContainer()){}
 
 void PaoDB::readOwners(const QJsonObject& js){
   QJsonArray OwnerArray = js["Owners"].toArray();

@@ -6,10 +6,7 @@
  * animalID is a non negative number < of 4.294.967.295
  */
 
-//#include<QJsonObject>
-
 #include"animaldata.h"
-//#include"abstractvisit.h"
 
 class Animal{
   private:

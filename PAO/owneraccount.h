@@ -27,7 +27,6 @@ class OwnerAccount{
     void setVet(bool);
 
     void saveOwnerAccountToFile(QJsonObject&);
-  //  bool operator==(const OwnerAccount&) const;
 };
 
 #endif // USERACCOUNT_H

@@ -52,5 +52,5 @@ void Animal::setAnimalID(const unsigned int aid){
 }
 
 void Animal::setAnimalData(const AnimalData& ad){
-  animalInfo = ad; //assegnazione standard di AnimalData
+  animalInfo = ad;
 }

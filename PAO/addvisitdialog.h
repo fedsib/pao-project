@@ -1,16 +1,9 @@
 #ifndef ADDVISITDIALOG_H
 #define ADDVISITDIALOG_H
 
-//#include <QDialog>
-//#include <QGroupBox>
 #include <QRadioButton>
-#include <QLabel>
-//#include <QLineEdit>
+//#include <QLabel>
 #include <QPushButton>
-//#include <QDialogButtonBox>
-//#include <QVBoxLayout>
-//#include <QHBoxLayout>
-//#include <QFormLayout>
 
 #include "basicvisit.h"
 #include "specializedvisit.h"

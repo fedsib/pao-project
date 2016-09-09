@@ -2,7 +2,6 @@
 #define USERDATA_H
 
 #include<QDate>
-//#include<QJsonObject>
 
 #include"contactinfo.h"
 

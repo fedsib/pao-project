@@ -1,7 +1,6 @@
 #ifndef ADDANIMALDIALOG_H
 #define ADDANIMALDIALOG_H
 
-//#include <QDialog>
 #include <QDateEdit>
 #include <QComboBox>
 

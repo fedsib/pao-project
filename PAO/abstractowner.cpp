@@ -1,9 +1,6 @@
 #include "abstractowner.h"
 
-AbstractOwner::AbstractOwner(const QJsonObject& js) : fiscalCode(js["CF"].toString()), account(new OwnerAccount(js)){
-//account->setPwdH(js["hash"].toString());
-//account->setVet(js["isVet"].toBool());
-}
+AbstractOwner::AbstractOwner(const QJsonObject& js) : fiscalCode(js["CF"].toString()), account(new OwnerAccount(js)){}
 
 void AbstractOwner::saveAbsOwner(QJsonObject& js){
    js["CF"] = fiscalCode;

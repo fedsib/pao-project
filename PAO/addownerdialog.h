@@ -8,9 +8,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDialogButtonBox>
-//#include <QVBoxLayout>
-//#include <QHBoxLayout>
-//#include <QFormLayout>
 
 #include "owner.h"
 #include "vetcontrol.h"

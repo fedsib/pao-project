@@ -61,8 +61,6 @@ class VetControl : public QObject{
     void deleteAnimal();
     void deleteVisit();
 
-    //void searchAndShowOwners(const QString &);
-
     void openAddOwnerDialog();
     void openAddAnimalDialog();
     void openAddVisitDialog();

@@ -43,8 +43,3 @@ void OwnerAccount::saveOwnerAccountToFile(QJsonObject& js){
   js["hash"] = pwdHash;
   js["isVet"] = Vet;
 }
-/*
-bool OwnerAccount::operator==(const OwnerAccount& ua) const{
-   return this->getPwdHash() == ua.getPwdHash();
-}
-*/

@@ -1,7 +1,6 @@
 #ifndef EDITVISITDIALOG_H
 #define EDITVISITDIALOG_H
 
-#include <QDialog>
 #include <QPushButton>
 
 #include "basicvisit.h"
