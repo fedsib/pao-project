@@ -1,0 +1,31 @@
+{
+    "Visits": [
+        {
+            "IDVet": "PSTRNG62E14L219W ",
+            "animalID": 80,
+            "basic_price": 30,
+            "complete_price": 78,
+            "date": "M7d8y17",
+            "note": "Animale poco socievole",
+            "type": "VaccineVisit"
+        },
+        {
+            "IDVet": "CQSGTR74P59F205N",
+            "animalID": 951,
+            "basic_price": 45,
+            "complete_price": 45,
+            "date": "M1d1y00",
+            "note": "Gatto in buona salute e vivace",
+            "type": "BasicVisit"
+        },
+        {
+            "IDVet": "CQSGTR74P59F205N",
+            "animalID": 123,
+            "basic_price": 54,
+            "complete_price": 140.40000000000001,
+            "date": "M1d9y16",
+            "note": "Animale con gravi problemi di sovrappeso",
+            "type": "SpecializedVisit"
+        }
+    ]
+}

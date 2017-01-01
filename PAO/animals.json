@@ -1,0 +1,69 @@
+{
+    "Animals": [
+        {
+            "IDApplication": "3MM03car2005",
+            "animalID": 123,
+            "birth": "4MM03car2015",
+            "breed": "Blu di Prussia",
+            "category": "Gatto",
+            "fur": "Blu",
+            "name": "Stella",
+            "owner": "RGZLGN45P65D612G",
+            "sex": "Femmina",
+            "type": "Pet",
+            "weight": 4
+        },
+        {
+            "IDApplication": "3MM03car2016",
+            "animalID": 25,
+            "birth": "4MM05car2015",
+            "breed": "Canarino",
+            "category": "Volatile",
+            "fur": "Giallo",
+            "name": "Chicco",
+            "owner": "CQSGTR74P59F205N",
+            "sex": "Maschio",
+            "type": "Pet",
+            "weight": 0
+        },
+        {
+            "IDApplication": "2MM09car2015",
+            "animalID": 546,
+            "birth": "9MM08car2015",
+            "breed": "Meticcio",
+            "category": "Gatto",
+            "fur": "Nero",
+            "name": "Megalo",
+            "owner": "PSTRNG62E14L219W",
+            "sex": "Maschio",
+            "type": "Pet",
+            "weight": 6
+        },
+        {
+            "IDApplication": "4MM04car2006",
+            "animalID": 80,
+            "birth": "5MM03car2006",
+            "breed": "Cane da Montagna dei Pirenei",
+            "category": "Cane",
+            "fur": "Bianco",
+            "name": "Achille",
+            "owner": "PSTRNG62E14L219W",
+            "sex": "Maschio",
+            "type": "Pet",
+            "weight": 48
+        },
+        {
+            "IDApplication": "3MM03car2013",
+            "animalID": 951,
+            "birth": "3MM07car2012",
+            "breed": "Meticcio",
+            "category": "Gatto",
+            "fur": "Grigio",
+            "name": "Mao",
+            "owner": "RGZLGN45P65D612G",
+            "sex": "Maschio",
+            "type": "Pet",
+            "weight": 6
+        }
+    ]
+}

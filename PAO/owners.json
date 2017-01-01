@@ -1,0 +1,48 @@
+{
+    "Owners": [
+        {
+            "CF": "\nPSTRNG62E14L219W ",
+            "address": "via della Mole Antonelliana, 3, 10121, Torino",
+            "hash": "79a1362e3bba6e039232adf4abc94a7a",
+            "isVet": true,
+            "mail": "ermpis@pao.it",
+            "name": "Ermenegildo",
+            "phone": "012548721",
+            "surname": "Pistacchi",
+            "type": "Owner"
+        },
+        {
+            "CF": "CQSGTR74P59F205N ",
+            "address": "via Navigli, 1234, 20100, Milano",
+            "hash": "c47d187067c6cf953245f128b5fde62a",
+            "isVet": true,
+            "mail": "gacq@pao.it",
+            "name": "Gertrude",
+            "phone": "012428608",
+            "surname": "Acquasaliente",
+            "type": "Owner"
+        },
+        {
+            "CF": "DBRMCR56H09D969C ",
+            "address": "Via del campo, 715, 16121, Genova",
+            "hash": "1a1dc91c907325c69271ddf0c944bc72",
+            "isVet": true,
+            "mail": "adb@email.it",
+            "name": "Amilcare",
+            "phone": "1234567890",
+            "surname": "De Bortoli",
+            "type": "Owner"
+        },
+        {
+            "CF": "RGZLGN45P65D612G ",
+            "address": "Via Santa Maria Novella, 2, 50121 Firenze",
+            "hash": "d2c2b83008dce38013577ef83a101a1b",
+            "isVet": false,
+            "mail": "",
+            "name": "Ragazzoni",
+            "phone": "00258741369",
+            "surname": "Ildegonda",
+            "type": "Owner"
+        }
+    ]
+}
