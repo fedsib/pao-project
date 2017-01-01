@@ -1,0 +1,76 @@
+\chapter{Orientamento agli Oggetti} 
+ 
+\section{Descrizione delle Gerarchie}
+
+L'intera applicazione si compone di 20 classi (12 per le gerarchie principali, 3 di tipi utilità e 6 per la GUI).
+La gerarchia principale, nonché la più importante è la gerarchia delle visite. Essa si compone di quattro classi:
+\begin{itemize}
+	\item \textit{\textbf{AbstractVisit}}: Una classe virtuale pura (non istanziabile direttamente), contiene 3 metodi virtuali puri, uno per scrivere su file i campi contenuti nelle classi derivate, uno per calcolare il prezzo finale della visita e uno di utilità che ritorna una stringa indicante il tipo di Visita.
+	\item \textit{\textbf{BasicVisit}}: Deriva pubblicamente da \textit{AbstractVisit} e calcola il costo finale, \textit{override} dell'apposito metodo virtuale puro, restituendo il prezzo base.
+	\item \textit{\textbf{VaccineVisit}} Deriva pubblicamente da \textit{AbstractVisit} e calcola il costo finale tramite override,  come il doppio del prezzo base di una visita di base.
+	\item \textit{\textbf{SpecializedVisit}} Deriva pubblicamente da \textit{AbstractVisit} e calcola il costo finale con un 30 \% aggiuntivo rispetto al prezzo di un Vaccino.
+\end{itemize} 
+
+\subsection{Utilità e ruolo dei tipi}
+ Oltre alle quattro classi descritte sopra, ve ne sono altre:
+ \begin{itemize}
+ 	\item \textit{\textbf{AbstractOwner}}: Modella un generico proprietario di animali (può essere un veterinario), è una classe virtuale pura, madre della seconda gerarchia. Contiene due metodi virtuali puri, usati per restituire una stringa e per salvare i dati su file; contiene inoltre un puntatore ad una classe \textit{OwnerAccount} e una stringa per memorizzare il Codice Fiscale.
+ 	\item \textit{\textbf{Owner}}: Deriva pubblicamente da \textit{AbstractOwner} e rappresenta un proprietario privato di animali. Contiene un puntatore ad una classe \textit{OwnerData}.
+ 	\item \textit{\textbf{OwnerAccount}}: Utilizzata per funzionalità future. Permette di distinguere se un utente è o no un veterinario. Inoltre fornisce delle funzionalità di Encryption della password, memorizzata tramite un hash.
+ 	\item \textit{\textbf{OwnerData}}: Contiene le informazioni di un proprietario, quali nome, cognome e informazioni di contatto, queste ultime tramite un campo dati di tipo \textit{ContactInfo}
+ 	\item \textit{\textbf{ContactInfo}}: Utilizzata in \textit{OwnerData}, descrive indirizzo fisico, mail e numero di telefono di un proprietario.
+ 	\item \textit{\textbf{Animal}}: Descrive un animale generico. E' una classe virtuale pura, madre della terza gerarchia utilizzata dall'applicazione.
+ 	Contiene due metodi virtuali puri per restituire una stringa e per salvare i campi dati su file. Contiene inoltre un campo ad una classe \textit{AnimalData}
+ 	\item \textit{\textbf{Pet}}: Estende pubblicamente \textit{Animal} e rappresenta un animale domestico, caratterizzato dal tipo (Cane, Gatto, Volatile o Altro), dal colore del pelo e dalla razza dell'animale.
+ 	\item \textit{\textbf{AnimalData}}:Contiene le informazioni essenziali di un animale, quali nome, data di nascita, sesso e peso ed eventualmente data di applicazione del microchip.
+ \end{itemize}
+ 
+ Vi sono poi due classi d'utilità: Il contenitore delle visite e il database vero e proprio. Le ulteriori sei classi che modellano la parte grafica verranno trattate nella sezione \textit{Interfaccia Grafica}.
+ 
+ \begin{itemize}
+ 	\item \textit{\textbf{PaoDB}}: Gestisce gli utenti tramite una \textit{QMap<QString, AbstractOwner*>}, gli animali tramite una \textit{QMap<QString, Animal*>} e le visite tramite il contenitore preposto, \textit{PaoContainer}. \\ La classe fornisce metodi per inserire, modificare, rimuovere proprietari, animali e visite, per leggere i dati delle tre entità da file e caricarli in memoria e per salvarli su disco rigido in formato \textit{JSON}
+ \end{itemize}
+ 
+ 
+ \subsection{Descrizione del contenitore}
+ La classe PaoContainer altro non è che una lista che permette inserimenti in testa ed in coda. \\Essa si avvale di due classi interne private: \textit{node}, la lista vera e propria di nodi e \textit{SmartPointer} per la gestione della memoria condivisa, così come visto durante il corso. 
+ \\ Il contenitore mette a disposizione per iterare sui suoi elementi due tipi di iteratori: Un \textit{iterator} per accedere normalmente agli elementi del contenitore e un \textit{const\_iterator} utilizzato per la sola lettura. La classe \textit{PaoContainer} è amica degli iteratori e viceversa, questo permette agli iteratori di accedere alla parte privata di \textit{PaoContainer} e a \textit{PaoContainer} di accedere alla parte privata degli iteratori. \\ 
+ 
+ \textit{PaoContainer} fornisce funzioni per determinare la sua dimensione (\textit{size()}), per verificare se è vuoto (\textit{isEmpty()}) per l'inserimento in testa (\textit{push\_front}) e in coda (\textit{push\_back}), per ottenere una visita da modificare, per ritornare l'iteratore iniziale e l'iteratore \textit{Past the End} e per rimuovere visite.
+ I suoi due campi dati sono uno \textit{SmartPointer} che punta alla testa del Contenitore e un intero che ne rappresenta la size, cioè il numero di elementi contenuti. Container fornisce inoltre l'\textit{overloading} dell'operatore di accesso a membro \textit{operator[]}, altri operatori sono stati ridefiniti nelle classi interne.
+ 
+\section{Incapsulamento}
+
+Si è scelto di garantire un incapsulamento fornendo alle varie classi, alcune funzioni cercando di usare, quanto più, metodi costanti e  gli specificatori di accesso \textit{private} e \textit{protected} rendendo \textit{public} solo dei metodi \textit{getter} e \textit{setter} di interfaccia.
+\\Questo, da una parte permette di non accedere direttamente ai campi dati ma dall'altra espone in parte la struttura delle classi.
+Alla fine, dopo averci riflettuto su a lungo, per quanto la soluzione non sia delle migliori e visti gli scopi del progetto è risultata essere la scelta più conveniente. \footnotetext[3]{ \url{http://goo.gl/CPF3up} } \footnotetext[4]{ \url{https://dzone.com/articles/getter-setter-use-or-not-use-0} }
+
+Un incapsulamento soddisfacente è stato ottenuto per il salvataggio dei dati delle singole classi su file, dove ogni classe è responsabile di salvare i propri campi dati.
+
+\section{Modularità}
+
+Ogni classe è stata suddivisa in un file di header .h contenente le dichiarazioni e in un file .cpp contenente le definizioni implementative. Si è cercato inoltre di suddividere i compiti in varie funzioni secondo il principio della \textit{Single-Responsibility}, ovvero un compito specifico per ciascuna funzione.
+
+\section{Estensibilità $\backslash$ Evolvibilità}
+
+Si è scelto di far partire le tre gerarchie con delle classi astratte, in modo da permettere una eventuale estensione futura del software. 
+Ad esempio, si potranno creare dei diversi tipi di proprietario derivando da \textit{AbstractOwner}, per rappresentare uno zoo o un parco nazionale. 
+Si potrà derivare \textit{Animal} per nuove categorie di animali (esotici, selvaggi, da giardino) e soprattutto si potranno creare nuovi tipi di visite a partire da \textit{AbstractVisit}, includendo, ad esempio, un accertamento radiologico con un prezzo appositamente calcolato.
+\\ 
+
+\subsection{Esempi d'uso di codice polimorfo}
+\lstinputlisting[language=C++, firstline=6, lastline=9]{cpp/specializedvisit.cpp} 
+Un esempio di \textit{override} di un metodo virtuale puro, per il calcolo del costo finale di una visita specialistica.\\
+
+\lstinputlisting[language=C++, firstline=120, lastline=135]{cpp/vetcontrol.cpp} 
+
+Un esempio di RTTI per estrarre i dati dei proprietari da aggiungere alla tabella.\\
+
+\lstinputlisting[language=C++, firstline=14, lastline=18]{cpp/specializedvisit.cpp} 
+
+Sempre sulla visita specialistica, un esempio di \textit{override} per salvare i dati su file.\\
+
+\textit{\textbf{Nota:}} Si voleva utilizzare il marcatore esplicito \textit{override} previsto da \textit{C++11}, in modo da rendere più chiaro quali metodi sono degli override all'interno delle classi, tuttavia ciò non è stato possibile in quanto la versione di GCC presente in laboratorio non supportava ancora tale funzione.
+
+\section{Efficienza $\backslash$ Robustezza}
+Si è cercato di rendere robusta soprattutto l'interfaccia grafica tramite dei controlli elementari sui campi dati inseriti, ad esempio le chiavi non possono essere una \textit{QString} vuota.

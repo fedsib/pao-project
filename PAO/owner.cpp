@@ -1,21 +1,21 @@
 #include "owner.h"
 
-Owner::Owner(){}
+Owner::Owner(const QString cf) : AbstractOwner(cf){}
 
-Owner::Owner(const UserData& ud) : userInfo(ud) {}
+Owner::Owner(const QString& cf, OwnerAccount* uac, OwnerData* ud) : AbstractOwner(cf,uac) , ownerInfo(ud) {}
 
-Owner::Owner(const QJsonObject& js) :  AbstractOwner(js), userInfo(UserData(js)){}
+Owner::Owner(const QJsonObject& js) :  AbstractOwner(js), ownerInfo(new OwnerData(js)){}
 
-UserData& Owner::getUserInfo() const{
-  return const_cast<UserData&>(this->userInfo);
+OwnerData* Owner::getOwnerInfo() const{
+  return ownerInfo;
 }
 
-QString Owner::typeOfUser() const {
+QString Owner::typeOfOwner() const {
   return "Owner";
 }
 
 void Owner::saveObj(QJsonObject& js){
-  js["type"] = this->typeOfUser();
+  js["type"] = this->typeOfOwner();
   saveAbsOwner(js);
-  userInfo.saveUserDataToFile(js);
+  ownerInfo->saveOwnerDataToFile(js);
 }

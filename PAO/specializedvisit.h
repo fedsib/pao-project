@@ -6,12 +6,12 @@
 
 class SpecializedVisit : public AbstractVisit{
   public:
-    SpecializedVisit();
+    SpecializedVisit(const QDate& , const QString&, const unsigned int, QString="", double=20);
     SpecializedVisit(const QJsonObject&);
 
-    virtual double calcPrice() const override;
-    virtual QString typeOfVisit() const override;
-    virtual void saveObj(QJsonObject&) const override;
+    virtual double calcPrice() const;
+    virtual QString typeOfVisit() const;
+    virtual void saveObj(QJsonObject&) const;
 };
 
 #endif // SPECIALIZEDVISIT_H

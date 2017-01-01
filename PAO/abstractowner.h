@@ -1,17 +1,14 @@
 #ifndef ABSTRACTOWNER_H
 #define ABSTRACTOWNER_H
 
-/*Describe a generic PAO user.*/
+/*Describe a generic PAO owner.*/
 
-#include<QString>
-#include <QJsonObject>
-#include"animal.h"
-#include"useraccount.h"
+#include"owneraccount.h"
 
 class AbstractOwner{
   private:
     QString fiscalCode;
-    UserAccount account;
+    OwnerAccount* account;
 
   protected:
     AbstractOwner(const QJsonObject&);
@@ -20,11 +17,12 @@ class AbstractOwner{
   public:
     AbstractOwner();
     AbstractOwner(const QString&);
+    AbstractOwner(const QString&, OwnerAccount*);
 
     QString getFiscalCode() const;
-    UserAccount& getUserAccount() const;
+    OwnerAccount* getOwnerAccount() const;
 
-    virtual QString typeOfUser() const =0;
+    virtual QString typeOfOwner() const =0;
     virtual void saveObj(QJsonObject&) = 0;
 };
 

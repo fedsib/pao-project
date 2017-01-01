@@ -1,11 +1,12 @@
-#include "mainwindow.h"
+//#include "mainwindow.h"
+#include "vetview.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
+    QApplication pao(argc, argv);
+    VetView w;
     w.show();
 
-    return a.exec();
+    return pao.exec();
 }

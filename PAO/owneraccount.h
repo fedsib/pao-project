@@ -8,24 +8,25 @@
 #include<QCryptographicHash>
 #include<QJsonObject>
 
-class UserAccount{
+class OwnerAccount{
   private:
-    QString pwdHash;            //Is the hash converted to QString, not the plain text pwd
+    QString pwdHash;            //It's the hash converted to QString, not the plain text pwd
     bool Vet;
+
   public:
-    UserAccount();
-    UserAccount(const QString&, bool=false);
-    UserAccount(const QJsonObject&);
+    OwnerAccount();
+    OwnerAccount(const QString&, bool=false);
+    OwnerAccount(const QJsonObject&);
 
     QString getPwdHash() const;
     bool isVet() const;
 
-    bool match(const QString&)const ;
+    bool match(const QString&) const ;
+    void setPwdH(QString);
     void setPwd(const QString&);
     void setVet(bool);
 
-    void saveUserAccountToFile(QJsonObject&);
-    bool operator==(const UserAccount&) const;
+    void saveOwnerAccountToFile(QJsonObject&);
 };
 
 #endif // USERACCOUNT_H

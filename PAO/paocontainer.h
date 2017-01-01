@@ -3,7 +3,7 @@
 
 /*A custom container for PAO's objects */
 
-#include<iostream>
+//#include<iostream>
 #include"abstractvisit.h"
 
 class PaoContainer{
@@ -80,7 +80,9 @@ class PaoContainer{
 
     int size() const;
     bool isEmpty() const;
-    void remove(const QDateTime&, const unsigned int);
+    bool contains(QString) const;
+    AbstractVisit* obtainVisitForEdit(QString key);
+    void remove(QString);
     void push_front(AbstractVisit*);
     void push_back(AbstractVisit*);
 

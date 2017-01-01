@@ -6,26 +6,26 @@
  * animalID is a non negative number < of 4.294.967.295
  */
 
-#include<QJsonObject>
-
 #include"animaldata.h"
-#include"abstractvisit.h"
 
 class Animal{
   private:
+    QString animalCode;
     QString ownerID;
     unsigned int animalID;
     AnimalData animalInfo;
+    void setAnimalCode();
 
   protected:
     void saveAbsAnimal(QJsonObject&);
 
   public:
-    Animal();
-    Animal(const unsigned int, const AnimalData& data);
+    Animal(const QString&, const unsigned int);
+    Animal(const QString&, const unsigned int, const AnimalData& data);
     Animal(const QJsonObject&);
 
     QString getOwnerID() const;
+    QString getAnimalCode() const;
     unsigned int getAnimalID() const;
     AnimalData& getAnimalData() const;
 

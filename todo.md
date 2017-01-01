@@ -1,12 +1,12 @@
 ##TODO
-- [ ] Controllare costruttori default
+- [X] Controllare costruttori default
 - [ ] Rivedere parametri const costruttori
 - [ ] Controllare metodi set
 - [ ] Controllare triade memoria classi base
 - [ ] Rimuovere commenti inutili dalle classi
-- [ ] Implementare Database
+- [X] Implementare Database
 - [ ] Fare relazione
-- [ ] getter/setter PaoContainer in Animal.h
-- [ ] const_cast vs setter in animal/userData
-- [ ] controllare metodi QDate in animalData
-- [ ] controllare JSON constructor Animal
+- [X] getter/setter PaoContainer in Animal.h
+- [X] const_cast vs setter in animal/userData
+- [X] controllare metodi QDate in animalData
+- [X] controllare JSON constructor Animal
